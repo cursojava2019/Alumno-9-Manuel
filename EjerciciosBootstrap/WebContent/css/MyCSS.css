@@ -1,0 +1,27 @@
+@charset "ISO-8859-1";
+
+@media screen and (max-width: 600px){
+	#lacaja{
+		margin: 0 auto;
+		width: 80%;
+	}
+	
+	h1 {
+		text-align: center;
+	}
+	#pequeña{
+		float: left;
+		width: 25%;
+	}
+	
+	#grande{
+		float: left;
+		width: 75%;
+	}
+	#grande ul li{
+		list-style-type: none;
+		float: left;
+		width: 32%;
+		padding: 1px;
+	}
+}
