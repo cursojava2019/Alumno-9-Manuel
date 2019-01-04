@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript">
+	window.onload=function(){		
+		var btn=document.getElementById("enviar");
+		var nom=document.getElementById("nom");
+		var p=document.getElementById("p");
+		
+		var ahora=new Date(); 
+		var hora=ahora.getHours();
+		
+		btn.onclick=function(){
+			if(hora>12 && hora<18){
+				p.innerHTML="Buenas Tardes,"+nom.value;
+			}
+			else if(hora>18 && hora<24){
+				p.innerHTML="Buenas Noches,"+nom.value;
+			}
+			else{
+				p.innerHTML="Buenos Días,"+nom.value;
+			}
+		}
+	}
+</script>
+<body>
+	Introduce nombre:
+	<input type="text" id="nom"/>
+	<input type="button" id="enviar" value="Enviar" />
+	<p id="p"></p>
+</body>
+</html>

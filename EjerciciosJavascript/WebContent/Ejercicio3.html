@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>EJ3</title>
+</head>
+<script type="text/javascript">
+function calculo(){
+	var c = 100;
+	var j = 2;
+	var numerosPrimos = [];
+
+	for (; j < c; j++) {
+	  if (primo(j)) {
+		numerosPrimos.push(j)
+	  }
+	}
+	console.log(numerosPrimos);
+	var p=document.getElementById("p");
+	p.innerHTML=numerosPrimos;
+}
+function primo(numero) {
+	  for (var i = 2; i < numero; i++) {
+	    if (numero % i === 0) {
+	      return false;
+	    }
+	  }
+	  return numero !== 1;
+	}
+</script>
+<body onload="calculo()">
+	<p id="p"></p>
+</body>
+</html>

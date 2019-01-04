@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript">
+	window.onload=function(){
+		var contraseña="1234";
+		
+		var btn=document.getElementById("enviar");
+		var pass=document.getElementById("pass");
+		
+		btn.onclick=function(){
+			if(pass.value==contraseña){
+				window.location.href = "./Ejercicio4.html";
+			}
+			else{
+				alert("Esta no es la contraseña");
+			}
+		}
+	}
+</script>
+<body>
+	<input type="password" id="pass"/>
+	<br/>
+	<input type="button" id="enviar" value="Enviar" />
+</body>
+</html>

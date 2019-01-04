@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>EJ4</title>
+</head>
+<script>
+	function pinta(color){
+		document.body.style.background=color;
+	}
+</script>
+<style>
+body{
+	display: flex;
+}
+	.cuadrado{
+		flex: auto;
+		width: 10%;
+		height: 0;
+		padding-top: 10%;
+		position: relative;
+	}
+</style>
+<body>
+	<div class="cuadrado" style="background: red" onMouseOver="pinta('red')"></div>
+	<div class="cuadrado" style="background: orange" onmouseover="pinta('orange')"></div>
+	<div class="cuadrado" style="background: yellow" onmouseover="pinta('yellow')"></div>
+	<div class="cuadrado" style="background: blue" onmouseover="pinta('blue')"></div>
+	<div class="cuadrado" style="background: green" onmouseover="pinta('green')"></div>
+</body>
+</html>

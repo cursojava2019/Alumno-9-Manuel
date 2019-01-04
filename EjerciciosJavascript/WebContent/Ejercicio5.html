@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Ejercicio5</title>
+</head>
+<script type="text/javascript">
+	window.onload=function(){
+		var pesetas=166.386;
+		var resultado=0;
+		var btn=document.getElementById("enviar");
+		var pae=document.getElementById("pesaeur");
+		var eap=document.getElementById("eurapes");
+		btn.onclick=function(){
+			if(pae.value=="" && eap.value!=""){
+				resultado=eap.value/pesetas;
+				pae.value=resultado;
+			}
+			
+			if(eap.value=="" && pae.value!=""){
+				resultado=pae.value*pesetas;
+				eap.value=resultado;
+			}
+		}
+	}
+</script>
+<body>
+<form>
+	Euros a Pesetas:
+	<input type="text" id="pesaeur" />
+	<br/>
+	Pesetas a Euros:
+	<input type="text" id="eurapes" />
+	<br/>
+	<input type="button" id="enviar" value="Enviar" />
+	<input type="reset" value="Reset" />
+</form>
+</body>
+</html>
