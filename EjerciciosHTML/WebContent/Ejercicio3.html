@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Formulario de registro - Mi web</title>
+</head>
+<body>
+	<h1>Formulario de registro</h1>
+	<form action="" method="get">
+		<label >Nombre: <input type="text" id="nombre" maxlength="50"/></label>
+		<br/>
+		<br/>
+		<label >Apellidos: <input type="text" id="apellidos" maxlength="50"/></label>
+		<br/>
+		<br/>
+		<label>Sexo:</label>
+		<label>
+		<input type="radio" name="sexo" value="hombre" checked="checked" /> Hombre
+		</label>
+		<label>
+			<input type="radio" name="sexo" value="mujer" /> Mujer
+		</label>
+		<br/>
+		<br/>
+		<label >Correo: <input type="text" id="correo" maxlength="50"/></label>
+		<br/>
+		<br/>
+		<label for="poblacion">Población:</label>
+		<br/>
+		<br/>
+		<select id="poblacion" name="poblacion">
+			<option value="" selected>- Elija población -</option>
+			<option value="alicante">Alicante</option>
+			<option value="madrid">Madrid</option>
+			<option value="sevilla">Sevilla</option>
+			<option value="valencia">Valencia</option>
+		</select>
+		<br/>
+		<br/>
+		<label>Descripción:
+			<textarea rows="4" cols="50" maxlength="50" ></textarea>
+		</label>
+		<br/>
+		<br/>
+		<label>
+			<input type="checkbox" name="deseo" checked="checked"> Deseo recibir información sobre novedades y ofertas.
+		</label>
+		<br/>
+		<br/>
+		<label>
+			<input type="checkbox" name="declaro"> Declaro haber leido infromación sobre novedades y ofertas. 
+		</label>
+		<br/>
+		<br/>
+		<input type="submit" id="enviar"/>
+	</form>
+</body>
+</html>
