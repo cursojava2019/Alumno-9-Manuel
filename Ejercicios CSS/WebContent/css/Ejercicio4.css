@@ -1,0 +1,31 @@
+@charset "ISO-8859-1";
+
+body{
+	padding-left: 10px;
+	padding-right: 10px;
+}
+h1{
+	border: 2px solid;
+	border-color: #00F;
+	padding: 10px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+h2{
+	border: 2px solid;
+	border-color: #AAA;
+}
+h2:first-of-type{
+	padding: 5px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+ul {
+	border: 2px solid;
+	border-color: #0F0;
+}
+ul li{
+	margin: 15px;
+}

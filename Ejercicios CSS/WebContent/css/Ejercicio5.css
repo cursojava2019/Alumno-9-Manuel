@@ -1,0 +1,26 @@
+@charset "ISO-8859-1";
+
+body {
+	width: 960px;
+	margin: 0 auto;
+}
+
+h1 {
+	text-align: center;
+}
+
+#datos {
+ float: left;
+ width: 260px;
+}
+
+#principal {
+  float: left;
+  width: 700px;
+}
+
+#principal ul li{
+	float:left;
+	width: 32%;
+	padding: 1px;
+}
