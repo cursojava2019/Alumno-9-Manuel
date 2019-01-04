@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript">
+	window.onload=function(){		
+		var btn=document.getElementById("enviar");
+		var nom=document.getElementById("nom");
+		var p=document.getElementById("p");
+		
+		btn.onclick=function(){
+			console.log(nom.value);
+			var nombre=nom.value;
+			var arrdecad=nombre.split(" ");
+			console.log(arrdecad);
+			p.innerHTML="Numero de palabras: "+arrdecad.length+"<br/>Primera palabra: "+arrdecad[0]+"<br/>Primera palabra: "+arrdecad[arrdecad.length-1]+"<br/>Palabras inversas:"+arrdecad.reverse()+"<br/>Palabras ordenadas de A a Z:"+arrdecad.reverse()+;
+			/*var myWindow = window.open("", "MsgWindow", "");
+			myWindow.document.write("<p>Numero de palabras: "+arrdecad.lenght+"Primera palabra: "+arrdecad[0]+"Primera palabra: "+arrdecad[arrdecad.leght-1]+"Palabras inversas:"+arrdecad.reverse()+"</p>");
+		*/
+		}
+	}
+</script>
+<body>
+	Introduce una cadena:
+	<input type="text" id="nom"/>
+	<input type="button" id="enviar" value="Enviar" />
+	<p id="p"></p>
+</body>
+</html>
