@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript">
+window.onload = function(){
+	var p=document.createElement("p");
+	p.setAttribute("id","p");
+    document.body.appendChild(p);
+}
+window.onmousemove = function (){
+    var x = window.event.clientX;
+    var y = window.event.clientY;
+    var p=document.getElementById("p");
+    mostar(p,x,y);
+}
+
+function mostar(elemento,x,y){
+	p.innerHTML="Posición X: "+x+"Posición Y: "+y;
+}
+</script>
+<body>
+
+</body>
+</html>

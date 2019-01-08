@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript">
+window.onload = function(){
+	var p=document.createElement("p");
+	p.setAttribute("id","p");
+    document.body.appendChild(p);
+
+    setInterval(function(){
+    	var momentoactual= new Date();
+        var hora = momentoactual.getHours();
+        var minuto = momentoactual.getMinutes();
+       	var segundo = momentoactual.getSeconds();
+    	p.innerHTML=hora + " : " + minuto + " : " + segundo;
+    }, 1000);
+}
+</script>
+<body>
+
+</body>
+</html>
