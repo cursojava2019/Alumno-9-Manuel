@@ -10,12 +10,12 @@ import java.util.Scanner;
  *
  */
 public class ejercicio1 {
-	private static Scanner entrada;
-	private static Cuenta cuenta;
+	private static Scanner ENTRADA;
+	private static Cuenta CUENTA;
 
 	public static void inicializar() {
-		entrada = new Scanner(System.in);
-		cuenta = null;
+		ENTRADA = new Scanner(System.in);
+		CUENTA = null;
 	}
 
 	public static void main(String[] args) {
@@ -28,8 +28,8 @@ public class ejercicio1 {
 			System.out.println("2.- Añadir saldo a la Cuenta");
 			System.out.println("3.- Retirar saldo a la Cuenta");
 			System.out.println("0.- Salir");
-			opcion = entrada.nextInt();
-			entrada.nextLine();
+			opcion = ENTRADA.nextInt();
+			ENTRADA.nextLine();
 			switch (opcion) {
 			case 1:
 				inicializarCuenta();
@@ -50,22 +50,22 @@ public class ejercicio1 {
 	}
 
 	private static void retirarSaldo() {
-		if (cuenta != null) {
+		if (CUENTA != null) {
 			System.out.println("Introduzca el saldo que desea retirar");
-			Double saldo = entrada.nextDouble();
-			cuenta.retirar(saldo);
-			System.out.println("El resultado de la operación es:" + cuenta.toString());
+			Double saldo = ENTRADA.nextDouble();
+			CUENTA.retirar(saldo);
+			System.out.println("El resultado de la operación es:" + CUENTA.toString());
 		} else {
 			System.out.println("Debe crear una cuenta primero para realizar esta operacion");
 		}
 	}
 
 	private static void aniadirSaldo() {
-		if (cuenta != null) {
+		if (CUENTA != null) {
 			System.out.println("Introduzca el saldo que desea añadir");
-			Double saldo = entrada.nextDouble();
-			cuenta.ingresar(saldo);
-			System.out.println("El resultado de la operación es:" + cuenta.toString());
+			Double saldo = ENTRADA.nextDouble();
+			CUENTA.ingresar(saldo);
+			System.out.println("El resultado de la operación es:" + CUENTA.toString());
 		} else {
 			System.out.println("Debe crear una cuenta primero para realizar esta operacion");
 		}
@@ -74,11 +74,11 @@ public class ejercicio1 {
 	private static void inicializarCuenta() {
 		// TODO Auto-generated method stub
 		System.out.println("Introduzca el nombre del titular");
-		String titular = entrada.nextLine();
+		String titular = ENTRADA.nextLine();
 		System.out.println("Introduzca el saldo");
-		Double saldo = entrada.nextDouble();
-		cuenta = new Cuenta(titular, saldo);
-		System.out.println("El resultado de la operación es:" + cuenta.toString());
+		Double saldo = ENTRADA.nextDouble();
+		CUENTA = new Cuenta(titular, saldo);
+		System.out.println("El resultado de la operación es:" + CUENTA.toString());
 	}
 
 }
