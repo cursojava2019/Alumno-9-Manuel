@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript">
+	window.onload=function(){
+		var Enviar=document.getElementById("Enviar");
+		var p=document.getElementById("p");
+		
+		Enviar.onclick=function(){
+			var sexo=document.getElementsByName("sexo").checked;
+			console.log(sexo);
+			p.innerHTML="El sexo elegido es: ";
+
+		}
+	}
+</script>
+<body>
+	<form>
+		Hombre:<input type="radio" name="sexo" value="Hombre"/>
+		Mujer:<input type="radio" name="sexo" value="Mujer"/>
+		Genero no Binario:<input type="radio" name="sexo" value="Genero no Binario"/>
+		<input type="button" value="Enviar" id="Enviar"/>
+	</form>
+	<p id="p"></p>
+</body>
+</html>
