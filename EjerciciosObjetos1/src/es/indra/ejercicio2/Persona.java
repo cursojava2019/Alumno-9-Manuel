@@ -34,11 +34,11 @@ public class Persona {
 		this.altura = Float.valueOf(0);
 	}
 
-	public Persona(String nombre, Integer edad, String dNI, Character sexo, Float peso, Float altura) {
+	public Persona(String nombre, Integer edad, Character sexo, Float peso, Float altura) {
 		super();
 		this.nombre = nombre;
 		this.edad = edad;
-		this.DNI = dNI;
+		this.DNI = generaDNI(null);
 		this.sexo = sexo;
 		this.peso = peso;
 		this.altura = altura;
