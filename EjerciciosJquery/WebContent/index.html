@@ -32,14 +32,36 @@ $(document).ready(function(){
     $('#14').click(function(){
     	$(':odd').css("background-color", "yellow");
     });
+    
+    $('#21').click(function(){
+    	$('img').attr("alt","Esto es una imagen");
+    });
+    
+    $('#22').click(function(){
+    	$('form > input').css("background-color", "gray");
+    });
+    
+    $('#23').click(function(){
+    	$('#myList > .current')..removeClass("current");
+    });
+    
+    $('#24').click(function(){
+    	$('#myList > .current')..removeClass("current");
+    });
 });
 </script>
 <body>
-<input type="button" id="11" value="Ej1"/>
-<input type="button" id="12" value="Ej2"/>
-<input type="button" id="13" value="Ej3"/>
-<input type="button" id="14" value="Ej4"/>
-
+<input type="button" id="11" value="Ej1.1"/>
+<input type="button" id="12" value="Ej1.2"/>
+<input type="button" id="13" value="Ej1.3"/>
+<input type="button" id="14" value="Ej1.4"/>
+<br/>
+<input type="button" id="21" value="Ej2.1"/>
+<input type="button" id="22" value="Ej2.2"/>
+<input type="button" id="23" value="Ej2.3"/>
+<input type="button" id="24" value="Ej2.4"/>
+<input type="button" id="25" value="Ej2.5"/>
+<br/>
 	<div id="header">
 		<div id="logo" rel="logo"><a href="index.html">jQuery Fundamentals</a></div>
 		<ul id="nav">
