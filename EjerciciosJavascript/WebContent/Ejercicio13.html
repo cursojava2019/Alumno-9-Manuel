@@ -24,7 +24,38 @@
                 }
             });
          }
-        
+        var igual=document.getElementById("EsIgual");
+        igual.addEventListener("click",function(){
+        	var resultado=0;
+        	var suma=texto.value.split("+");
+        	if(suma.length>1){
+        		resultado=parseInt(suma[0])+parseInt(suma[1]);
+        		texto.value=resultado;
+        	}
+        	var resta=texto.value.split("-");
+        	if(resta.length>1){
+        		resultado=parseInt(resta[0])-parseInt(resta[1]);
+        		texto.value=resultado;
+        	}
+        	var multi=texto.value.split("x");
+        	if(multi.length>1){
+        		resultado=parseInt(multi[0])*parseInt(multi[1]);
+        		texto.value=resultado;
+        	}
+        	var div=texto.value.split("/");
+        	if(div.length>1){
+        		resultado=parseInt(div[0])/parseInt(div[1]);
+        		texto.value=resultado;
+        	}
+        	
+        });
+        var C=document.getElementById("C");
+        C.addEventListener("click",function(){
+        	for(i=0;i<simbolos.length;i++){
+            	simbolos[i].disabled = false;
+            }
+        	texto.value="";
+        });
     }
 
 </script>
@@ -103,7 +134,7 @@
             </td>
 	    
     	    <td>
-    		   <input type="Button" id="C" value="C"/>
+    		   <input type="button" id="C" value="C"/>
     	    </td>
         </tr>
     </table>
