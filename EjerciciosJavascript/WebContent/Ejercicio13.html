@@ -11,10 +11,19 @@
         console.log(numeros);
         for(i=0;i<numeros.length;i++){
            numeros[i].addEventListener("click",function(){
-               //texto.value=numeros[i].value;
-               console.log(this.id);
+               texto.value+=this.value;
+               console.log(this.value);
            });
         }
+        for(i=0;i<simbolos.length;i++){
+        	simbolos[i].addEventListener("click",function(){
+                texto.value+=this.value;
+                console.log(this.value);
+                for(i=0;i<simbolos.length;i++){
+                	simbolos[i].disabled = true;
+                }
+            });
+         }
         
     }
 
@@ -26,7 +35,7 @@
         
 		<tr>
             <td colspan="4">
-                <input type="text" id="resultado" maxlength="20" value="0" readonly="true"/>
+                <input type="text" id="resultado" maxlength="20" readonly="true"/>
             </td>
         </tr>
 		
