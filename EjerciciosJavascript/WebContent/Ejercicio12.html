@@ -8,11 +8,8 @@
 	window.onload=function(){
 		var Enviar=document.getElementById("Enviar");
 		var p=document.getElementById("p");
-		
 		Enviar.onclick=function(){
-			var sexo=document.getElementsByName("sexo").checked;
-			console.log(sexo);
-			p.innerHTML="El sexo elegido es: ";
+			p.innerHTML="Numero de palabras: "+arrdecad.length+"<br/>Primera palabra: "+arrdecad[0]+"<br/>Primera palabra: "+arrdecad[arrdecad.length-1]+"<br/>Palabras inversas:"+arrdecad.reverse()+"<br/>Palabras ordenadas de A a Z:"+arrdecad.reverse()+;
 
 		}
 	}

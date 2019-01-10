@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title>Ejercicio 13</title>
+<script>
+	window.onload=function(){
+        var numeros=document.getElementsByName("numero");
+        var simbolos=document.getElementsByName("simbolos");
+        var texto=document.getElementById("resultado");
+        console.log(numeros);
+        for(i=0;i<numeros.length;i++){
+           numeros[i].addEventListener("click",function(){
+               //texto.value=numeros[i].value;
+               console.log(numeros[i]);
+           });
+        }
+        
+    }
+
+</script>
+	
+</head>
+<body>
+    <table id="calculadora">
+        
+		<tr>
+            <td colspan="4">
+                <input type="text" id="resultado" maxlength="20" value="0" readonly="true"/>
+            </td>
+        </tr>
+		
+		
+        <tr>
+            
+            <td>
+                <input type="Button" id="Dividir" value="/" name="simbolos"/>
+            </td>
+            <td>
+                <input type="Button" id="Multiplicar" value="x" name="simbolos"/>
+            </td>
+			
+			<td>
+                <input type="Button" id="Restar" value="-" name="simbolos"/>
+            </td>
+			
+			 <td>
+    	        <input type="Button" id="Sumar" value="+" name="simbolos"/>
+    	    </td>
+        </tr>
+			
+        
+        <tr>
+            <td>
+                <input type="Button" id="7" value="7" name="numero"/>
+            </td>
+            <td>
+                <input type="Button" id="8" value="8" name="numero"/>
+            </td>
+            <td>
+                <input type="Button" id="9" value="9" name="numero"/>
+            </td>
+            
+        </tr>
+        <tr>
+            <td>
+                <input type="Button" id="4" value="4" name="numero"/>
+            </td>
+            <td>
+                <input type="Button" id="5" value="5" name="numero"/>
+            </td>
+            <td>
+                <input type="Button" id="6" value="6" name="numero"/>
+            </td>
+    	   
+        </tr>
+		<tr>
+            <td>
+                <input type="Button" id="1" value="1" name="numero"/>
+            </td>
+            <td>
+                <input type="Button" id="2" value="2" name="numero"/>
+            </td>
+            <td>
+                <input type="Button" id="3" value="3" name="numero"/>
+            </td>
+            <td>
+                <input type="Button" id="EsIgual" value="="/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="Button" id="0" value="0" name="numero"/>
+            </td>
+	    
+    	    <td>
+    		   <input type="Button" id="C" value="C"/>
+    	    </td>
+        </tr>
+    </table>
+</body>
+</html>

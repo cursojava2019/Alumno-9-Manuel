@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title>Ejercicio 14</title>
+<script>
+  function poner() {
+    document.getElementById("imagen").src = "./imagenes/2.jpg";
+  }
+ 
+  function quitar() {
+    document.getElementById("imagen").src = "./imagenes/1.jpg";
+  }	 
+	  
+</script>
+	
+</head>
+<body>
+   <img src="./imagenes/1.jpg" id="imagen"  onMouseOver="poner()" onMouseOut="quitar()">
+</body>
+</html>
