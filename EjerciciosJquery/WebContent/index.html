@@ -42,11 +42,49 @@ $(document).ready(function(){
     });
     
     $('#23').click(function(){
-    	$('#myList > .current')..removeClass("current");
+    	$('#myList > .current').removeClass("current");
     });
     
     $('#24').click(function(){
-    	$('#myList > .current')..removeClass("current");
+    	console.log('El texto seleccionado es:', $('input[type=submit]').val() );
+    });
+    
+    $('#25').click(function(){
+    	$p=$("#slideshow li:nth-child(1)");
+		$p.addClass("current");
+	    $p=$("#slideshow li:nth-child(2)");   
+		$p.addClass("disabled");
+	    $p=$("#slideshow li:nth-child(3)");
+		$p.addClass("disabled");
+    });
+    
+    $('#31').click(function(){
+    	var $p=$('#myList');
+		   for (var i = 0; i < 4; i++)
+		   { 
+		      $("#myList").append("<li> List item "+(i+8)+ "</li>");
+		   }
+    });
+    
+    $('#32').click(function(){
+    	$('#myList li:even').remove();
+    });
+    
+    $('#33').click(function(){
+    	var $p=$('#specials');
+	     $p.append( "<h2>Test</h2>" );
+		 $p.append( "<p>Esto es un nuevo parrafo</p>" );
+    });
+    
+    $('#34').click(function(){
+    	$('select[name=day]').append('<option value="Wednesday">Friday</option>'); 
+    });
+    
+    $('#35').click(function(){
+    	var $p=$('#specials');
+        $p.append( "<div class='module'> " );
+		$p.append( " <img src='images/fruit.jpg' alt='fruit' /> " );
+        $p.append( " </div>" );
     });
 });
 </script>
@@ -61,6 +99,12 @@ $(document).ready(function(){
 <input type="button" id="23" value="Ej2.3"/>
 <input type="button" id="24" value="Ej2.4"/>
 <input type="button" id="25" value="Ej2.5"/>
+<br/>
+<input type="button" id="31" value="Ej3.1"/>
+<input type="button" id="32" value="Ej3.2"/>
+<input type="button" id="33" value="Ej3.3"/>
+<input type="button" id="34" value="Ej3.4"/>
+<input type="button" id="35" value="Ej3.5"/>
 <br/>
 	<div id="header">
 		<div id="logo" rel="logo"><a href="index.html">jQuery Fundamentals</a></div>
