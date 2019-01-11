@@ -60,7 +60,7 @@ public class ejercicio5 {
 				mayorVJ = listaVideojuego.get(i);
 			}
 		}
-		System.out.println("La serie con mas temporadas es: " + mayorVJ.toString());
+		System.out.println("el videojuego con mas horas es: " + mayorVJ.toString());
 
 	}
 
