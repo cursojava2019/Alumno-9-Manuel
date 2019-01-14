@@ -27,9 +27,10 @@ public class Estudiante extends Persona {
 		Integer resultado = 0;
 		if (resultado < 0) {
 			resultado = 0;
-		}
-		if (resultado > 10) {
+		} else if (resultado > 10) {
 			resultado = 10;
+		} else {
+			resultado = calificacion;
 		}
 		return resultado;
 	}

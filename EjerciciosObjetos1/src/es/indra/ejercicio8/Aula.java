@@ -59,7 +59,8 @@ public class Aula {
 	public void notasDeClase() {
 		if (darClase() == true) {
 			for (Estudiante e : this.estudiantes) {
-				System.out.println(e.nombre + " tienes un " + e.Calificacion + " en la asignatura " + this.destinada);
+				System.out
+						.println(e.nombre + " tienes un " + e.Calificacion + " en la asignatura de " + this.destinada);
 			}
 		}
 	}
