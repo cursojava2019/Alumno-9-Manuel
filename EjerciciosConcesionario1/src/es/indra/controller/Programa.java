@@ -212,14 +212,18 @@ public class Programa {
 			if (!file.exists()) {
 				try {
 					file.createNewFile();
-
-					PrintWriter salida = new PrintWriter(file);
-					salida.println(venta.toString());
-					salida.flush();
-					salida.close();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+			}
+			PrintWriter salida;
+			try {
+				salida = new PrintWriter(file);
+				salida.println(venta.toString());
+				salida.flush();
+				salida.close();
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 			System.out.println("Venta realizada correctamente");
 		} else {
