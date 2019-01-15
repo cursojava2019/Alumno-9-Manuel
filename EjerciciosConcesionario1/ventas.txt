@@ -1,0 +1,1 @@
+Venta [vehiculo=Vehiculo [codigo=1, marca=Renault, tipo=coche, anio=2015, kilometraje=15000, vendido=true], comprador=Comprador [dni=26245927Y, nombre=manuel, apellidos=garin, telefono=601598652, direccion=linares, cp=23600, propiedades=[Vehiculo [codigo=1, marca=Renault, tipo=coche, anio=2015, kilometraje=15000, vendido=true]]], precioVenta=5000.0]
