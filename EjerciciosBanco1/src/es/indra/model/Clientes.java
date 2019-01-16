@@ -1,6 +1,8 @@
 package es.indra.model;
 
-public class Clientes {
+import java.io.Serializable;
+
+public class Clientes implements Serializable {
 	private String dni;
 	private String nombre;
 	private String apellidos;
