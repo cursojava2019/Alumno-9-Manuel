@@ -1,1 +1,2 @@
-Cuentas [numeroDeCuenta=1, saldo=199.5, cliente=Clientes [dni=26245927Y, nombre=manuel, apellidos=garin, direccion=601359366, telefono=aqui], tipoDeCuenta=CC, comision=0.6, intereses=0.1]
+Cuentas [numeroDeCuenta=2, saldo=0.0, cliente=Clientes [dni=26245927Y, nombre=yo, apellidos=yo, direccion=625987651, telefono=a], tipoDeCuenta=FI, comision=0.6, intereses=0.34]
+Cuentas [numeroDeCuenta=1, saldo=499.59999999999997, cliente=Clientes [dni=11111111Y, nombre=a, apellidos=s, direccion=123456789, telefono=d], tipoDeCuenta=CV, comision=0.6, intereses=0.2]Cuentas [numeroDeCuenta=2, saldo=0.0, cliente=Clientes [dni=11111111Y, nombre=a, apellidos=s, direccion=123456789, telefono=d], tipoDeCuenta=FI, comision=0.6, intereses=0.34]
