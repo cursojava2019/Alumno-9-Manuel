@@ -272,7 +272,7 @@ public class Programa {
 			return;
 		}
 
-		Cuentas operacion = banco.forzarRevisonMensual(dni, codigo);
+		Cuentas operacion = banco.forzarRevisionMensual(dni, codigo);
 
 		if (operacion != null) {
 			File file = new File(FICHERO_BANCO);

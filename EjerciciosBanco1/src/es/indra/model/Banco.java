@@ -69,7 +69,7 @@ public class Banco implements Serializable {
 		}
 	}
 
-	public Cuentas forzarRevisonMensual(String dni, String codigo) {
+	public Cuentas forzarRevisionMensual(String dni, String codigo) {
 		Clientes cli = this.clientes.get(dni);
 		Cuentas cue = this.cuentas.get(codigo);
 		if (cli != null && cue != null && cue.getCliente().equals(cli)) {
