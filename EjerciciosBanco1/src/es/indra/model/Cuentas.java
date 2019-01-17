@@ -33,16 +33,16 @@ public class Cuentas implements Serializable {
 		String tc = null;
 		if (tcuenta.equalsIgnoreCase("CC") || tcuenta.equalsIgnoreCase("CuentaCorriente")) {
 			tc = "CC";
-			return tcuenta;
+			return tc;
 		} else if (tcuenta.equalsIgnoreCase("CV") || tcuenta.equalsIgnoreCase("CuentaVivienda")) {
 			tc = "CV";
-			return tcuenta;
+			return tc;
 		} else if (tcuenta.equalsIgnoreCase("FI") || tcuenta.equalsIgnoreCase("FondoInversion")) {
 			tc = "FI";
-			return tcuenta;
+			return tc;
 		} else {
 			tc = "CC";
-			return tcuenta;
+			return tc;
 		}
 	}
 
@@ -108,11 +108,11 @@ public class Cuentas implements Serializable {
 
 	public void sacarDinero(Double cantidad) {
 		Double s = getSaldo() - cantidad;
-		if (s < 0 || cantidad > getSaldo() && getTipoDeCuenta().equalsIgnoreCase("CC")) {
+		if (getTipoDeCuenta().equalsIgnoreCase("CV")) {
 			System.out.println("No se puede retirar esa cantidad de dinero de esta cuenta");
-		} else if (getTipoDeCuenta().equalsIgnoreCase("FI") && s < -500) {
+		} else if (getTipoDeCuenta().equalsIgnoreCase("CC") && cantidad > getSaldo()) {
 			System.out.println("No se puede retirar esa cantidad de dinero de esta cuenta");
-		} else if (getTipoDeCuenta().equalsIgnoreCase("CV")) {
+		} else if (getTipoDeCuenta().equalsIgnoreCase("FI") && s < -500.0) {
 			System.out.println("No se puede retirar esa cantidad de dinero de esta cuenta");
 		} else {
 			setSaldo(s);

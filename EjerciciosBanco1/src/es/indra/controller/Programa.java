@@ -192,6 +192,7 @@ public class Programa {
 			try {
 				salida = new FileWriter(file, true);
 				salida.write(operacion.toString());
+				salida.write("\n");
 				salida.flush();
 				salida.close();
 			} catch (Exception e) {
@@ -241,6 +242,7 @@ public class Programa {
 			try {
 				salida = new FileWriter(file, true);
 				salida.write(operacion.toString());
+				salida.write("\n");
 				salida.flush();
 				salida.close();
 			} catch (Exception e) {
@@ -287,6 +289,7 @@ public class Programa {
 			try {
 				salida = new FileWriter(file, true);
 				salida.write(operacion.toString());
+				salida.write("\n");
 				salida.flush();
 				salida.close();
 			} catch (Exception e) {
