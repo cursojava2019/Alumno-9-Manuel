@@ -123,7 +123,7 @@ public class Programa {
 		String marca = ENTRADA.nextLine();
 		System.out.println("Introduzca tipo y pulse intro");
 		String tipo = ENTRADA.nextLine();
-		Vehiculo v = new Vehiculo(codigo, marca, tipo, anio, km, false);
+		Vehiculo v = new Vehiculo(codigo, marca, "", tipo, anio, km, false);
 		concesionario.aniadirVehiculo(v);
 		System.out.println("Vehiculo añadido correctamente");
 	}

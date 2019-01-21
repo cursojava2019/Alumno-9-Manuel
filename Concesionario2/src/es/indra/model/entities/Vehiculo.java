@@ -10,6 +10,7 @@ public class Vehiculo implements Serializable {
 
 	private Long codigo;
 	private String marca;
+	private String modelo;
 	private String tipo;
 	private Integer anio;
 	private Integer kilometraje;
@@ -19,7 +20,8 @@ public class Vehiculo implements Serializable {
 		super();
 	}
 
-	public Vehiculo(Long codigo, String marca, String tipo, Integer anio, Integer kilometraje, Boolean vendido) {
+	public Vehiculo(Long codigo, String marca, String modelo, String tipo, Integer anio, Integer kilometraje,
+			Boolean vendido) {
 		super();
 		this.codigo = codigo;
 		this.marca = marca;
@@ -27,6 +29,7 @@ public class Vehiculo implements Serializable {
 		this.anio = anio;
 		this.kilometraje = kilometraje;
 		this.vendido = vendido;
+		this.modelo = modelo;
 	}
 
 	private String valideTipo(String s) {
@@ -86,10 +89,19 @@ public class Vehiculo implements Serializable {
 		this.vendido = vendido;
 	}
 
+	public String getModelo() {
+		return this.modelo;
+	}
+
+	public void setModelo(String modelo) {
+		this.modelo = modelo;
+	}
+
 	@Override
 	public String toString() {
-		return "Vehiculo [codigo=" + this.codigo + ", marca=" + this.marca + ", tipo=" + this.tipo + ", anio="
-				+ this.anio + ", kilometraje=" + this.kilometraje + ", vendido=" + this.vendido + "]";
+		return "Vehiculo [codigo=" + this.codigo + ", marca=" + this.marca + ", modelo=" + this.modelo + ", tipo="
+				+ this.tipo + ", anio=" + this.anio + ", kilometraje=" + this.kilometraje + ", vendido=" + this.vendido
+				+ "]";
 	}
 
 }
