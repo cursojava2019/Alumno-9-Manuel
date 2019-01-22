@@ -35,6 +35,8 @@ public class Programa {
 				System.out.println("4.- Sacar dinero de una cuenta de un cliente");
 				System.out.println("5.- Forzar revision mensual");
 				System.out.println("6.- Estado de la cuenta");
+				System.out.println("7.- Eliminar un cliente");
+				System.out.println("8.- Borrar una cuenta");
 				System.out.println("0.- Salir");
 				opcion = ENTRADA.nextInt();
 				ENTRADA.nextLine();
@@ -56,6 +58,12 @@ public class Programa {
 					break;
 				case 6:
 					verEstadoCuenta();
+					break;
+				case 7:
+					borrarCliente();
+					break;
+				case 8:
+					borrarCuenta();
 					break;
 				case 0:
 					System.out.println("Fin del Programa");
@@ -178,6 +186,32 @@ public class Programa {
 		}
 
 		Cuentas operacion = banco.forzarRevisionMensual(dni, codigo);
+	}
+
+	public static void borrarCliente() {
+		System.out.println("Introduzca el dni del cliente que desea eliminar: ");
+		String dni = ENTRADA.nextLine();
+
+		Boolean cli = false;
+
+		cli = banco.borrarCliente(dni);
+
+		if (cli == false) {
+			System.out.println("No se ha podido borrar el cliente");
+		}
+	}
+
+	public static void borrarCuenta() {
+		System.out.println("Introduzca el numero de cuenta que desea eliminar: ");
+		String numero = ENTRADA.nextLine();
+
+		Boolean cue = false;
+
+		cue = banco.borrarCuenta(numero);
+
+		if (cue == false) {
+			System.out.println("No se ha podido borrar la cuenta");
+		}
 	}
 
 	public static void verEstadoCuenta() {

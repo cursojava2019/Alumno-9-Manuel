@@ -48,11 +48,25 @@ public class Banco implements Serializable {
 
 	public Boolean introducirCliente(Clientes c) {
 		this.clienteService.create(c);
+		System.out.println("Cliente creado satisfactoriamente");
 		return true;
 	}
 
 	public Boolean crearCuenta(Cuentas c) {
 		this.cuentaService.create(c);
+		System.out.println("Cuenta creada satisfactoriamente");
+		return true;
+	}
+
+	public Boolean borrarCliente(String dni) {
+		this.clienteService.delete(dni);
+		System.out.println("Cliente borrado satisfactoriamente");
+		return true;
+	}
+
+	public Boolean borrarCuenta(String codigo) {
+		this.cuentaService.delete(codigo);
+		System.out.println("Cuenta borrada satisfactoriamente");
 		return true;
 	}
 
