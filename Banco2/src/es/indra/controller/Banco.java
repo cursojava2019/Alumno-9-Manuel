@@ -64,6 +64,7 @@ public class Banco implements Serializable {
 			this.cuentaService.update(cue);
 			return cue;
 		} else {
+			System.out.println("La cuenta no pertenece a ese cliente o una de las dos es erronea");
 			return null;
 		}
 	}
@@ -76,6 +77,7 @@ public class Banco implements Serializable {
 			this.cuentaService.update(cue);
 			return cue;
 		} else {
+			System.out.println("La cuenta no pertenece a ese cliente o una de las dos es erronea");
 			return null;
 		}
 	}
@@ -88,6 +90,7 @@ public class Banco implements Serializable {
 			this.cuentaService.update(cue);
 			return cue;
 		} else {
+			System.out.println("La cuenta no pertenece a ese cliente o una de las dos es erronea");
 			return null;
 		}
 	}

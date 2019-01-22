@@ -22,7 +22,7 @@ public class Cuentas implements Serializable {
 		this.cliente = cliente;
 		this.tipoDeCuenta = tDecuenta(tipoDeCuenta);
 		this.comision = COMISION_DEFECTO;
-		this.intereses = interes(tipoDeCuenta);
+		this.intereses = interes(this.tipoDeCuenta);
 	}
 
 	public Cuentas() {

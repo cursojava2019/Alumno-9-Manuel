@@ -16,10 +16,6 @@ public class Programa {
 		banco = new Banco();
 	}
 
-	public static void fin() throws IOException {
-
-	}
-
 	public static void main(String[] args) {
 		try {
 			init();
@@ -45,23 +41,18 @@ public class Programa {
 				switch (opcion) {
 				case 1:
 					aniadirCliente();
-					fin();
 					break;
 				case 2:
 					creaCuenta();
-					fin();
 					break;
 				case 3:
 					realizarIngreso();
-					fin();
 					break;
 				case 4:
 					retirarDinero();
-					fin();
 					break;
 				case 5:
 					forzarRevisionMensual();
-					fin();
 					break;
 				case 6:
 					verEstadoCuenta();
@@ -75,13 +66,6 @@ public class Programa {
 			} while (opcion != 0);
 		} catch (Exception e) {
 			System.out.println("Error al guardar en fichero");
-			e.printStackTrace();
-		}
-
-		try {
-			fin();
-		} catch (IOException e) {
-			System.out.println("NO SE HA PODIDO GUARDAR");
 			e.printStackTrace();
 		}
 	}
