@@ -16,7 +16,6 @@ public class Programa {
 		banco = new Banco();
 	}
 
-//
 	public static void main(String[] args) {
 		try {
 			init();
