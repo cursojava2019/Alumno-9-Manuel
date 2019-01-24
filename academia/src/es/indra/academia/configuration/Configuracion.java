@@ -16,7 +16,7 @@ public class Configuracion {
 	private Configuracion() {
 		try {
 			this.parametros = new Properties();
-			InputStream propertiesStream = ClassLoader.getSystemResourceAsStream(fichero);
+			InputStream propertiesStream = getClass().getClassLoader().getResourceAsStream(fichero);
 			this.parametros.load(propertiesStream);
 			propertiesStream.close();
 		} catch (Exception e) {
@@ -32,11 +32,11 @@ public class Configuracion {
 
 	}
 
-	public Connection obtenerConexionBD() throws SQLException {
+	public Connection obtenerConexionBD() throws SQLException, ClassNotFoundException {
 		String url = this.parametros.getProperty("bbdd.url");
 		String usuario = this.parametros.getProperty("bbdd.usuario");
 		String pass = this.parametros.getProperty("bbdd.password");
-
+		Class.forName("org.postgresql.Driver");
 		Connection co = DriverManager.getConnection(url, usuario, pass);
 		return co;
 	}

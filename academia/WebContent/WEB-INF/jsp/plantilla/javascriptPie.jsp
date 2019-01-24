@@ -16,3 +16,9 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="<%=request.getContextPath() %>/dist/js/sb-admin-2.js"></script>
+    
+    <!-- DataTables JavaScript -->
+    <script src="<%=request.getContextPath() %>/vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="<%=request.getContextPath() %>/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <script src="<%=request.getContextPath() %>/vendor/datatables-responsive/dataTables.responsive.js"></script>
+    
