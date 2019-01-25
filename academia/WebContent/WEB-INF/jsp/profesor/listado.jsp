@@ -1,12 +1,12 @@
 <%@page import="java.util.ArrayList"%>
-<%@page import="es.indra.academia.model.entities.Alumno"%>
+<%@page import="es.indra.academia.model.entities.Profesor"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%
-	List<Alumno> listado=(List<Alumno>)request.getAttribute("listado");
+	List<Profesor> listado=(List<Profesor>)request.getAttribute("listado");
 	if (listado==null){
-		listado=new ArrayList<Alumno>();
+		listado=new ArrayList<Profesor>();
 	}
 	String patronBusqueda= request.getParameter("patron");
   if (patronBusqueda==null) patronBusqueda="";  
@@ -38,15 +38,15 @@
                             </div>
                             <%} %>
                         <div class="panel-heading">
-                            Listado de Alumnos
+                            Listado de Profesores
                         </div>
                         
                         <form name="buscador" action="./listado.html" method="post">
                         <div class="">
                         <div class="col-6">
-                        <label>Buscar Alumno</label>
+                        <label>Buscar Profesor</label>
                         </div>
-                        <div style="float:right;">  <button class="btn btn-default"  onclick="location.href='<%=request.getContextPath()%>/admin/alumnos/nuevo.html';" type="button"><i class="fa fa-user"> Nuevo Usuario</i>
+                        <div style="float:right;">  <button class="btn btn-default"  onclick="location.href='<%=request.getContextPath()%>/admin/profesor/nuevo.html';" type="button"><i class="fa fa-user"> Nuevo Usuario</i>
                                                 </button></div>
                         <div class="col-6">
                                             <input class="" name="patron" type="text" value="<%=patronBusqueda%>">

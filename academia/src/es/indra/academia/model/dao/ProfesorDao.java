@@ -6,24 +6,22 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import es.indra.academia.configuration.Configuracion;
-import es.indra.academia.model.entities.Alumno;
+import es.indra.academia.model.entities.Profesor;
 import es.indra.academia.model.support.Dao;
 import es.indra.academia.model.support.DaoException;
 
-public class AlumnoDao implements Dao<Long, Alumno> {
+public class ProfesorDao implements Dao<Long, Profesor> {
 
-	private static final String CAMPOS = "nif,nombre,apellido1,apellido2,telefono,correo,repetidor,fechaalta,fechabaja,observaciones";
+	private static final String CAMPOS = "nif,nombre,apellido1,apellido2,telefono,correo,titulacion";
 
 	@Override
-	public void create(Alumno entity) throws DaoException {
+	public void create(Profesor entity) throws DaoException {
 		try {
 			Connection co = Configuracion.getInstance().obtenerConexionBD();
-			PreparedStatement p = co
-					.prepareStatement("INSERT INTO ALUMNO(" + CAMPOS + ") VALUES (?,?,?,?,?,?,?,?,?,?) ");
+			PreparedStatement p = co.prepareStatement("INSERT INTO PROFESOR(" + CAMPOS + ") VALUES (?,?,?,?,?,?,?) ");
 
 			p.setString(1, entity.getNif());
 			p.setString(2, entity.getNombre());
@@ -31,18 +29,8 @@ public class AlumnoDao implements Dao<Long, Alumno> {
 			p.setString(4, entity.getApellido2());
 			p.setString(5, entity.getTelefono());
 			p.setString(6, entity.getCorreo());
-			p.setBoolean(7, entity.getRepetidor());
-			if (entity.getFechaAlta() != null) {
-				p.setDate(8, new java.sql.Date(entity.getFechaAlta().getTime()));
-			} else {
-				p.setDate(8, null);
-			}
-			if (entity.getFechaBaja() != null) {
-				p.setDate(9, new java.sql.Date(entity.getFechaBaja().getTime()));
-			} else {
-				p.setDate(9, null);
-			}
-			p.setString(10, entity.getObservaciones());
+			p.setString(7, entity.getTitulacion());
+
 			p.executeUpdate();
 			co.close();
 		} catch (SQLException e) {
@@ -54,25 +42,21 @@ public class AlumnoDao implements Dao<Long, Alumno> {
 	}
 
 	@Override
-	public void update(Alumno entity) throws DaoException {
-
+	public void update(Profesor entity) throws DaoException {
 		try {
 			Connection co = Configuracion.getInstance().obtenerConexionBD();
-			PreparedStatement p = co.prepareStatement("UPDATE ALUMNO" + "SET dni=?," + "nombre=?," + "apellido1=?,"
-					+ "apellido2=?," + "telefono=?," + "correo=?," + "repetidor=?," + "fechaalta=?," + "fechabaja=?,"
-					+ "observaciones=?  WHERE id=?;");
+			PreparedStatement p = co.prepareStatement("UPDATE PROFESOR" + "SET dni=?," + "nombre=?," + "apellido1=?,"
+					+ "apellido2=?," + "telefono=?," + "correo=?," + "titulacion=?  WHERE id=?;");
 
-			p.setLong(11, entity.getId());
+			p.setLong(8, entity.getId());
 			p.setString(1, entity.getNif());
 			p.setString(2, entity.getNombre());
 			p.setString(3, entity.getApellido1());
 			p.setString(4, entity.getApellido2());
 			p.setString(5, entity.getTelefono());
 			p.setString(6, entity.getCorreo());
-			p.setBoolean(7, entity.getRepetidor());
-			p.setDate(8, new java.sql.Date(entity.getFechaAlta().getTime()));
-			p.setDate(9, new java.sql.Date(entity.getFechaBaja().getTime()));
-			p.setString(10, entity.getObservaciones());
+			p.setString(7, entity.getTitulacion());
+
 			p.executeUpdate();
 			co.close();
 		} catch (SQLException e) {
@@ -80,14 +64,13 @@ public class AlumnoDao implements Dao<Long, Alumno> {
 			e.printStackTrace();
 			throw new DaoException();
 		}
-
 	}
 
 	@Override
 	public void delete(Long key) throws DaoException {
 		try {
 			Connection co = Configuracion.getInstance().obtenerConexionBD();
-			PreparedStatement p = co.prepareStatement("DELETE FROM ALUMNO WHERE id=?");
+			PreparedStatement p = co.prepareStatement("DELETE FROM PROFESOR WHERE id=?");
 
 			p.setLong(1, key);
 			p.executeUpdate();
@@ -97,60 +80,59 @@ public class AlumnoDao implements Dao<Long, Alumno> {
 			e.printStackTrace();
 			throw new DaoException();
 		}
-
 	}
 
 	@Override
-	public Alumno find(Long key) throws DaoException {
-		Alumno alumno = null;
+	public Profesor find(Long key) throws DaoException {
+		Profesor profesor = null;
 		try {
 			Connection co = Configuracion.getInstance().obtenerConexionBD();
-			String query = "SELECT id," + CAMPOS + " FROM ALUMNO WHERE id=?";
+			String query = "SELECT id," + CAMPOS + " FROM PROFESOR WHERE id=?";
 			PreparedStatement instruccion = co.prepareStatement(query);
 
 			instruccion.setLong(1, key);
 			ResultSet resultados = instruccion.executeQuery();
 			if (resultados.next()) {
-				alumno = obtenerAlumno(resultados);
+				profesor = obtenerProfesor(resultados);
 
 			}
 			co.close();
-			return alumno;
+			return profesor;
 		} catch (SQLException e) {
-			System.out.println("Error creando objeto en BBDD");
+			System.out.println("Error listando objeto en BBDD");
 			e.printStackTrace();
 			throw new DaoException();
 		}
 	}
 
 	@Override
-	public List<Alumno> findAll() throws DaoException {
+	public List<Profesor> findAll() throws DaoException {
 		try {
 			Connection co = Configuracion.getInstance().obtenerConexionBD();
 			Statement instruccion = co.createStatement();
 
-			String query = "SELECT id," + CAMPOS + " FROM ALUMNO";
+			String query = "SELECT id," + CAMPOS + " FROM PROFESOR";
 			ResultSet resultados = instruccion.executeQuery(query);
 
-			ArrayList<Alumno> listado = new ArrayList<Alumno>();
+			ArrayList<Profesor> listado = new ArrayList<Profesor>();
 
 			while (resultados.next()) {
 
-				Alumno alumno = obtenerAlumno(resultados);
+				Profesor profesor = obtenerProfesor(resultados);
 
-				listado.add(alumno);
+				listado.add(profesor);
 			}
 
 			co.close();
 			return listado;
 		} catch (Exception e) {
-			System.out.println("Error creando objeto en BBDD");
+			System.out.println("Error listando los objetos en BBDD");
 			e.printStackTrace();
 			throw new DaoException();
 		}
 	}
 
-	private Alumno obtenerAlumno(ResultSet resultado) throws SQLException {
+	private Profesor obtenerProfesor(ResultSet resultado) throws SQLException {
 
 		Long id = resultado.getLong(1);
 		String nif = resultado.getString(2);
@@ -159,45 +141,39 @@ public class AlumnoDao implements Dao<Long, Alumno> {
 		String apellido2 = resultado.getString(5);
 		String telefono = resultado.getString(6);
 		String correo = resultado.getString(7);
-		Boolean repetidor = resultado.getBoolean(8);
-		Date fechaAlta = resultado.getDate(9);
-		Date fechaBaja = resultado.getDate(10);
-		String observaciones = resultado.getString(11);
+		String titulacion = resultado.getString(8);
 
-		Alumno alumno = new Alumno();
-		alumno.setId(id);
-		alumno.setNif(nif);
-		alumno.setNombre(nombre);
-		alumno.setApellido1(apellido1);
-		alumno.setApellido2(apellido2);
-		alumno.setTelefono(telefono);
-		alumno.setCorreo(correo);
-		alumno.setFechaAlta(fechaAlta);
-		alumno.setFechaBaja(fechaBaja);
-		alumno.setRepetidor(repetidor);
-		alumno.setObservaciones(observaciones);
+		Profesor profesor = new Profesor();
+		profesor.setId(id);
+		profesor.setNif(nif);
+		profesor.setNombre(nombre);
+		profesor.setApellido1(apellido1);
+		profesor.setApellido2(apellido2);
+		profesor.setTelefono(telefono);
+		profesor.setCorreo(correo);
+		profesor.setTitulacion(titulacion);
 
-		return alumno;
+		return profesor;
 	}
 
-	public List<Alumno> findAlumnos(String patron) throws DaoException {
+	public List<Profesor> findProfesor(String patron) throws DaoException {
 
 		try {
 			Connection co = Configuracion.getInstance().obtenerConexionBD();
 			Statement instruccion = co.createStatement();
 
-			String query = "SELECT id," + CAMPOS + " FROM ALUMNO WHERE LOWER(nif) like LOWER('%" + patron
+			String query = "SELECT id," + CAMPOS + " FROM PROFESOR WHERE LOWER(nif) like LOWER('%" + patron
 					+ "%') OR LOWER(nombre) like LOWER('%" + patron + "%') OR LOWER(apellido1) like LOWER('%" + patron
 					+ "%')  OR LOWER(apellido2) like LOWER('%" + patron + "%') ;";
 			ResultSet resultados = instruccion.executeQuery(query);
 
-			ArrayList<Alumno> listado = new ArrayList<Alumno>();
+			ArrayList<Profesor> listado = new ArrayList<Profesor>();
 
 			while (resultados.next()) {
 
-				Alumno alumno = obtenerAlumno(resultados);
+				Profesor profesor = obtenerProfesor(resultados);
 
-				listado.add(alumno);
+				listado.add(profesor);
 			}
 
 			co.close();
