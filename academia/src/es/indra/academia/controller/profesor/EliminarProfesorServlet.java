@@ -1,28 +1,27 @@
 package es.indra.academia.controller.profesor;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import es.indra.academia.model.entities.Profesor;
 import es.indra.academia.model.service.ProfesorService;
 
 /**
- * Servlet implementation class CrearProfesorServlet
+ * Servlet implementation class EliminarProfesorServlet
  */
-@WebServlet("/admin/profesores/nuevo.html")
-public class CrearProfesorServlet extends HttpServlet {
+@WebServlet("/admin/profesores/eliminar.html")
+public class EliminarProfesorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public CrearProfesorServlet() {
+	public EliminarProfesorServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -34,8 +33,26 @@ public class CrearProfesorServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		RequestDispatcher dispacher = request.getRequestDispatcher("/WEB-INF/jsp/profesores/nuevo.jsp");
-		dispacher.forward(request, response);
+		String id = request.getParameter("id");
+		Long idLong = null;
+		ProfesorService profesorService = ProfesorService.getInstance();
+		try {
+			idLong = Long.parseLong(id);
+		} catch (NumberFormatException e) {
+			idLong = null;
+		}
+		if (idLong == null) {
+			response.sendRedirect("./listado.html?mensaje=errorId");
+		} else {
+			Profesor profesor = profesorService.find(idLong);
+			if (profesor != null) {
+				profesorService.delete(idLong);
+				response.sendRedirect("./listado.html?mensaje=correcto");
+			} else {
+				response.sendRedirect("./listado.html?mensaje=errorId");
+			}
+
+		}
 	}
 
 	/**
@@ -45,22 +62,8 @@ public class CrearProfesorServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		ArrayList<String> errores = new ArrayList<String>();
-
-		ProfesorForm profesor = ProfesorForm.obtenerProfesorForm(request);
-
-		profesor.validar(errores);
-		if (errores.size() > 0) {
-			request.setAttribute("formulario", profesor);
-			request.setAttribute("errores", errores);
-
-			RequestDispatcher dispacher = request.getRequestDispatcher("/WEB-INF/jsp/profesores/nuevo.jsp");
-			dispacher.forward(request, response);
-		} else {
-			ProfesorService profesorService = ProfesorService.getInstance();
-			profesorService.create(profesor);
-
-			response.sendRedirect("./listado.html?mensaje=correcto");
-		}
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
+
 }

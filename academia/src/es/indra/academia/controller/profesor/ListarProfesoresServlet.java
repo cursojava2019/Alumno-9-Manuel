@@ -35,9 +35,7 @@ public class ListarProfesoresServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO
 		ProfesorService profesorService = ProfesorService.getInstance();
-		// hay que continuar por aqui
 		List<Profesor> profesor = profesorService.findAll();
 		request.setAttribute("listado", profesor);
 

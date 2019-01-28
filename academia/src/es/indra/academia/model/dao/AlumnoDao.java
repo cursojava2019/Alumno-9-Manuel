@@ -58,7 +58,7 @@ public class AlumnoDao implements Dao<Long, Alumno> {
 
 		try {
 			Connection co = Configuracion.getInstance().obtenerConexionBD();
-			PreparedStatement p = co.prepareStatement("UPDATE ALUMNO" + "SET dni=?," + "nombre=?," + "apellido1=?,"
+			PreparedStatement p = co.prepareStatement("UPDATE ALUMNO " + "SET nif=?," + "nombre=?," + "apellido1=?,"
 					+ "apellido2=?," + "telefono=?," + "correo=?," + "repetidor=?," + "fechaalta=?," + "fechabaja=?,"
 					+ "observaciones=?  WHERE id=?;");
 
@@ -70,8 +70,16 @@ public class AlumnoDao implements Dao<Long, Alumno> {
 			p.setString(5, entity.getTelefono());
 			p.setString(6, entity.getCorreo());
 			p.setBoolean(7, entity.getRepetidor());
-			p.setDate(8, new java.sql.Date(entity.getFechaAlta().getTime()));
-			p.setDate(9, new java.sql.Date(entity.getFechaBaja().getTime()));
+			if (entity.getFechaAlta() != null) {
+				p.setDate(8, new java.sql.Date(entity.getFechaAlta().getTime()));
+			} else {
+				p.setDate(8, null);
+			}
+			if (entity.getFechaBaja() != null) {
+				p.setDate(9, new java.sql.Date(entity.getFechaBaja().getTime()));
+			} else {
+				p.setDate(9, null);
+			}
 			p.setString(10, entity.getObservaciones());
 			p.executeUpdate();
 			co.close();

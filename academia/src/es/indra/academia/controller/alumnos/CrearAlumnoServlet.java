@@ -49,31 +49,8 @@ public class CrearAlumnoServlet extends HttpServlet {
 			throws ServletException, IOException {
 		ArrayList<String> errores = new ArrayList<String>();
 
-		String nif = request.getParameter("nif");
-		String nombre = request.getParameter("nombre");
-		String apellido1 = request.getParameter("apellido1");
-		String apellido2 = request.getParameter("apellido2");
-		String telefono = request.getParameter("telefono");
-		String correo = request.getParameter("email");
-		String repetidor = request.getParameter("repetidor");
-		String observaciones = request.getParameter("observaciones");
+		AlumnoForm alumno = AlumnoForm.obtenerAlumnoForm(request);
 
-		AlumnoForm alumno = new AlumnoForm();
-		alumno.setCorreo(correo);
-		alumno.setApellido2(apellido2);
-		alumno.setApellido1(apellido1);
-		alumno.setNif(nif);
-		alumno.setNombre(nombre);
-		alumno.setTelefono(telefono);
-		alumno.setObservaciones(observaciones);
-
-		if (repetidor != null && !repetidor.equals("")) {
-			Boolean repetidorB = Boolean.parseBoolean(repetidor);
-			alumno.setRepetidor(repetidorB);
-		} else {
-			alumno.setRepetidor(false);
-		}
-		alumno.setObservaciones(observaciones);
 		alumno.setFechaAlta(new Date());
 		alumno.validar(errores);
 		if (errores.size() > 0) {

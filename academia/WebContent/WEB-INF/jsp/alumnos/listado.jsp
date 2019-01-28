@@ -9,14 +9,34 @@
 		listado=new ArrayList<Alumno>();
 	}
 	String patronBusqueda= request.getParameter("patron");
-  if (patronBusqueda==null) patronBusqueda="";  
+  if (patronBusqueda==null) patronBusqueda=""; 
+  
+ String mensaje= request.getParameter("mensaje");
+ Boolean mensajeOK=false;
+ Boolean mensajeError=false;
+ if (mensaje!=null) {
+ 		if (mensaje.equalsIgnoreCase("correcto")) {
+ 			mensajeOK=true;
+ 		}
+ 		if (mensaje.equalsIgnoreCase("errorId")) {
+ 			mensajeError=true;
+ 		}
+ }
 %>    
     
 <!DOCTYPE html>
 <html>
 <%@include file="../plantilla/head.jsp" %>
 <body>
-
+	<script>
+	function confirmarEliminacion(id){
+		if (confirm("¿Está seguro que desea eliminar este alumno?")){
+			location.href='<%=request.getContextPath()%>/admin/alumnos/eliminar.html?id='+id;
+		}
+		
+		
+	}
+	</script>
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -32,11 +52,18 @@
             <div class="row">
             <div class="col-lg-12">
             	<div class="panel panel-default">
-                        <%if (request.getParameter("mensaje")!=null){ %>
+                        <%if (mensajeOK){ %>
                         <div class="alert alert-success" id="mensaje">
                                Operación realizada correctamente
                             </div>
                             <%} %>
+                             <%if (mensajeError){ %>
+                        <div class="alert alert-danger" id="mensaje">
+                               Id no encontrado. No es posible realizar la operación.
+                            </div>
+                            <%} %>
+                            
+                            
                         <div class="panel-heading">
                             Listado de Alumnos
                         </div>
@@ -85,7 +112,7 @@
                                         <td><%=alumno.getApellido1()%> <%=alumno.getApellido2()%></td>
                                         <td><%=alumno.getNif()%></td>
                                         <td ><%=alumno.getTelefono()%></td>
-                                        <td ><a href="<%=alumno.getId()%>">Modificar</a> <a href="<%=alumno.getId()%>">Eliminar</a></td>
+                                        <td ><a href="<%=request.getContextPath()%>/admin/alumnos/modificar.html?id=<%=alumno.getId()%>">Modificar</a> <a href="#" onclick="confirmarEliminacion(<%=alumno.getId()%>)">Eliminar</a></td>
                                     </tr>
                                 <% } %>   
                                 </tbody>
