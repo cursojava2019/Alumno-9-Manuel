@@ -48,7 +48,8 @@ public class ModificarAlumnoServlet extends HttpServlet {
 		} else {
 			Alumno alumno = alumnoService.find(idLong);
 			if (alumno != null) {
-				request.setAttribute("formulario", alumno);
+				AlumnoForm form = new AlumnoForm(alumno);
+				request.setAttribute("formulario", form);
 				RequestDispatcher dispacher = request.getRequestDispatcher("/WEB-INF/jsp/alumnos/modificar.jsp");
 				dispacher.forward(request, response);
 			} else {

@@ -1,5 +1,6 @@
 package es.indra.academia.controller.alumnos;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +19,21 @@ public class AlumnoForm extends Alumno {
 		setCorreo("");
 		setObservaciones("");
 		setRepetidor(false);
+	}
+
+	public AlumnoForm(Alumno a) {
+		super();
+		setId(a.getId());
+		setNif(a.getNif());
+		setNombre(a.getNombre());
+		setApellido1(a.getApellido1());
+		setApellido2(a.getApellido2());
+		setTelefono(a.getTelefono());
+		setCorreo(a.getCorreo());
+		setObservaciones(a.getObservaciones());
+		setRepetidor(a.getRepetidor());
+		setFechaAlta(a.getFechaAlta());
+		setFechaBaja(a.getFechaBaja());
 	}
 
 	public void validar(List<String> errores) {
@@ -50,6 +66,8 @@ public class AlumnoForm extends Alumno {
 		String correo = request.getParameter("email");
 		String repetidor = request.getParameter("repetidor");
 		String observaciones = request.getParameter("observaciones");
+		String fechaBaja = request.getParameter("fechaBaja");
+		String fechaAlta = request.getParameter("fechaAlta");
 
 		AlumnoForm alumno = new AlumnoForm();
 		Long idLong = null;
@@ -57,6 +75,13 @@ public class AlumnoForm extends Alumno {
 			idLong = Long.parseLong(id);
 		} catch (NumberFormatException e) {
 			idLong = null;
+		}
+
+		if (fechaBaja != null && !fechaBaja.equals("")) {
+			alumno.setFechaBajaString(fechaBaja);
+		}
+		if (fechaAlta != null && !fechaAlta.equals("")) {
+			alumno.setFechaAltaString(fechaAlta);
 		}
 
 		Boolean repetiBool = Boolean.parseBoolean(repetidor);
@@ -70,5 +95,33 @@ public class AlumnoForm extends Alumno {
 		alumno.setObservaciones(observaciones);
 		alumno.setRepetidor(repetiBool);
 		return alumno;
+	}
+
+	public String getFechaAltaString() {
+		if (getFechaAlta() != null) {
+			return Long.toString(getFechaAlta().getTime());
+		} else {
+			return "";
+		}
+	}
+
+	public String getFechaBajaString() {
+		if (getFechaBaja() != null) {
+			return Long.toString(getFechaBaja().getTime());
+		} else {
+			return "";
+		}
+	}
+
+	public void setFechaAltaString(String fechaString) {
+		Long timeStamp = Long.parseLong(fechaString);
+		setFechaAlta(new Date(timeStamp));
+
+	}
+
+	public void setFechaBajaString(String fechaString) {
+		Long timeStamp = Long.parseLong(fechaString);
+		setFechaBaja(new Date(timeStamp));
+
 	}
 }
