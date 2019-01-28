@@ -23,7 +23,7 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                           <a href="<%=request.getContextPath()%>/admin/alumnos/listado.html"><i class="fa fa-bar-chart-o fa-fw"></i> Gestión de Profesores</a>
+                           <a href="<%=request.getContextPath()%>/admin/profesores/listado.html"><i class="fa fa-bar-chart-o fa-fw"></i> Gestión de Profesores</a>
                         </li>
                         
                     </ul>

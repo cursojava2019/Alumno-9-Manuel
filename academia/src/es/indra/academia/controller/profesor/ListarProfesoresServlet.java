@@ -16,7 +16,7 @@ import es.indra.academia.model.service.ProfesorService;
 /**
  * Servlet implementation class ListarProfesoresServlet
  */
-@WebServlet("/admin/profesor/listado.html")
+@WebServlet("/admin/profesores/listado.html")
 public class ListarProfesoresServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -41,7 +41,7 @@ public class ListarProfesoresServlet extends HttpServlet {
 		List<Profesor> profesor = profesorService.findAll();
 		request.setAttribute("listado", profesor);
 
-		RequestDispatcher dispacher = request.getRequestDispatcher("/WEB-INF/jsp/profesor/listado.jsp");
+		RequestDispatcher dispacher = request.getRequestDispatcher("/WEB-INF/jsp/profesores/listado.jsp");
 		dispacher.forward(request, response);
 
 		response.getWriter().append("Served at: ").append(request.getContextPath());
@@ -65,7 +65,7 @@ public class ListarProfesoresServlet extends HttpServlet {
 
 		request.setAttribute("listado", profesor);
 
-		RequestDispatcher dispacher = request.getRequestDispatcher("/WEB-INF/jsp/profesor/listado.jsp");
+		RequestDispatcher dispacher = request.getRequestDispatcher("/WEB-INF/jsp/profesores/listado.jsp");
 		dispacher.forward(request, response);
 	}
 

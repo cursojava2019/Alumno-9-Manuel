@@ -24,7 +24,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Alumnos</h1>
+                    <h1 class="page-header">Profesores</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -46,7 +46,7 @@
                         <div class="col-6">
                         <label>Buscar Profesor</label>
                         </div>
-                        <div style="float:right;">  <button class="btn btn-default"  onclick="location.href='<%=request.getContextPath()%>/admin/profesor/nuevo.html';" type="button"><i class="fa fa-user"> Nuevo Usuario</i>
+                        <div style="float:right;">  <button class="btn btn-default"  onclick="location.href='<%=request.getContextPath()%>/admin/profesores/nuevo.html';" type="button"><i class="fa fa-user"> Nuevo Usuario</i>
                                                 </button></div>
                         <div class="col-6">
                                             <input class="" name="patron" type="text" value="<%=patronBusqueda%>">
@@ -78,14 +78,14 @@
                                 </thead>
                                 <tbody>
                                 <% for(int i=0; i<listado.size();i++) {
-                                	Alumno alumno=listado.get(i);	
+                                	Profesor profesor=listado.get(i);	
                                 %>
                                     <tr class="odd gradeX">
-                                        <td><%=alumno.getNombre()%></td>
-                                        <td><%=alumno.getApellido1()%> <%=alumno.getApellido2()%></td>
-                                        <td><%=alumno.getNif()%></td>
-                                        <td ><%=alumno.getTelefono()%></td>
-                                        <td ><a href="<%=alumno.getId()%>">Modificar</a> <a href="<%=alumno.getId()%>">Eliminar</a></td>
+                                        <td><%=profesor.getNombre()%></td>
+                                        <td><%=profesor.getApellido1()%> <%=profesor.getApellido2()%></td>
+                                        <td><%=profesor.getNif()%></td>
+                                        <td ><%=profesor.getTelefono()%></td>
+                                        <td ><a href="<%=profesor.getId()%>">Modificar</a> <a href="<%=profesor.getId()%>">Eliminar</a></td>
                                     </tr>
                                 <% } %>   
                                 </tbody>

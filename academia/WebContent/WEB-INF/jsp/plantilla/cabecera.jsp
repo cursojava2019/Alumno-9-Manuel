@@ -8,7 +8,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Academia Juanchu</a>
+                <a class="navbar-brand" href="#">Academia de Pega</a>
             </div>
             <!-- /.navbar-header -->
 
