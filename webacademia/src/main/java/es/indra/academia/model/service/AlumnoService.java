@@ -3,6 +3,9 @@ package es.indra.academia.model.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import es.indra.academia.model.dao.AlumnoDao;
 import es.indra.academia.model.entities.Alumno;
 import es.indra.academia.model.support.Dao;
@@ -13,6 +16,7 @@ public class AlumnoService extends Service<Long, Alumno> {
 
 	private static AlumnoService singleton = null;
 	private AlumnoDao dao;
+	private Logger log = LogManager.getLogger(AlumnoService.class);
 
 	public static AlumnoService getInstance() {
 		if (singleton == null) {
@@ -39,6 +43,12 @@ public class AlumnoService extends Service<Long, Alumno> {
 			e.printStackTrace();
 			return new ArrayList<Alumno>();
 		}
+
+	}
+
+	@Override
+	protected Logger getLog() {
+		return this.log;
 
 	}
 

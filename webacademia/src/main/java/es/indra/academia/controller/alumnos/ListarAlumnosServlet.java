@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import es.indra.academia.model.entities.Alumno;
 import es.indra.academia.model.service.AlumnoService;
 
@@ -19,6 +22,7 @@ import es.indra.academia.model.service.AlumnoService;
 @WebServlet("/admin/alumnos/listado.html")
 public class ListarAlumnosServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private Logger log = LogManager.getLogger(ListarAlumnosServlet.class);
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -35,13 +39,14 @@ public class ListarAlumnosServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		this.log.info("Se recibe una petición para listar alumnos");
 		AlumnoService alumnoService = AlumnoService.getInstance();
 
 		List<Alumno> alumnos = alumnoService.findAll();
 		request.setAttribute("listado", alumnos);
 
 		RequestDispatcher dispacher = request.getRequestDispatcher("/WEB-INF/jsp/alumnos/listado.jsp");
+		this.log.debug("Se obtienen todos los alumnos de BBDD y se mandan al jsp");
 		dispacher.forward(request, response);
 	}
 
