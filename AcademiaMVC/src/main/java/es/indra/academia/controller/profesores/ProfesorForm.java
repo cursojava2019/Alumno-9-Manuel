@@ -67,26 +67,6 @@ public class ProfesorForm {
 		return a;
 	}
 
-//	public void validar(List<String> errores) {
-//		if (nif == null || nif.equals("")) {
-//			errores.add("El nif es obligatorio");
-//
-//		}
-//		if (nif.length() != 9) {
-//			errores.add("El formato de NIF no es correcto");
-//
-//		}
-//		if (nombre=() == null || getNombre().equals("")) {
-//			errores.add("El Nombre es obligatorio");
-//
-//		}
-//		if (getApellido1() == null || getApellido1().equals("")) {
-//			errores.add("El Primero Apellido es obligatorio");
-//
-//		}
-//
-//	}
-
 	public Long getId() {
 		return this.id;
 	}

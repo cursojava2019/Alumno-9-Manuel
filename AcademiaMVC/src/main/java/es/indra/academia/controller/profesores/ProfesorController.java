@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import es.indra.academia.controller.profesores.ProfesorFormValidator;
 import es.indra.academia.model.entities.Profesor;
 import es.indra.academia.model.service.ProfesorService;
 
@@ -69,7 +68,7 @@ public class ProfesorController {
 			Profesor profesor = this.profesorService.find(id);
 			if (profesor != null) {
 				ProfesorForm form = new ProfesorForm(profesor);
-				model.addAttribute("formulario", form);
+				model.addAttribute("profesor", form);
 				return "profesores/modificar";
 
 			} else {
@@ -81,20 +80,16 @@ public class ProfesorController {
 	}
 
 	@RequestMapping(value = "/modificar.html", method = RequestMethod.POST)
-	public String modificarPost(@ModelAttribute("formulario") ProfesorForm profesor, Model model) {
-		ArrayList<String> errores = new ArrayList<String>();
-
-		// profesor.validar(errores);
-		if (errores.size() > 0) {
-
-			model.addAttribute("errores", errores);
-
+	public String modificarPost(@Valid @ModelAttribute("profesor") ProfesorForm form, BindingResult result) {
+		this.validador.validate(form, result);
+		if (result.hasErrors()) {
 			return "profesores/modificar";
+
 		} else {
 
-			this.profesorService.update(profesor.obtenerProfesor());
-
+			this.profesorService.create(form.obtenerProfesor());
 			return "redirect:/admin/profesores/listado.html?mensaje=correcto";
+
 		}
 
 	}
