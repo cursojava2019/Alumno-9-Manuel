@@ -37,7 +37,7 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                                           			 
-                           			<form:form action="./modificar.html" method="post" modelAttribute="formulario" >
+                           			<form:form action="./modificar.html" method="post" modelAttribute="alumno" >
                                     	<form:hidden path="id" />
                                        
                                         <div class="form-group">

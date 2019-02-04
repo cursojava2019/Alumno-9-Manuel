@@ -68,7 +68,7 @@ public class AlumnoController {
 			Alumno alumno = this.alumnoService.find(id);
 			if (alumno != null) {
 				AlumnoForm form = new AlumnoForm(alumno);
-				model.addAttribute("formulario", form);
+				model.addAttribute("alumno", form);
 				return "alumnos/modificar";
 
 			} else {
@@ -80,7 +80,7 @@ public class AlumnoController {
 	}
 
 	@RequestMapping(value = "/modificar.html", method = RequestMethod.POST)
-	public String modificarPost(@Valid @ModelAttribute("formulario") AlumnoForm form, BindingResult result) {
+	public String modificarPost(@Valid @ModelAttribute("alumno") AlumnoForm form, BindingResult result) {
 
 		this.validador.validate(form, result);
 		if (result.hasErrors()) {
