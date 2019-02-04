@@ -1,4 +1,4 @@
-package es.indra.academia.controller.profesor;
+package es.indra.academia.controller.profesores;
 
 import java.io.IOException;
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
 <%@page import="es.indra.academia.model.entities.Profesor"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="es.indra.academia.controller.profesor.ProfesorForm"%>
+<%@page import="es.indra.academia.controller.profesores.ProfesorForm"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
