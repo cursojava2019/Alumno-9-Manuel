@@ -62,7 +62,7 @@
                         <div class="col-6">
                         <label>Buscar Alumno</label>
                         </div>
-                        <div style="float:right;">  <button class="btn btn-default"  onclick="location.href='<%=request.getContextPath()%>/admin/alumnos/nuevo.html';" type="button"><i class="fa fa-user"> Nuevo Usuario</i>
+                        <div style="float:right;">  <button class="btn btn-default"  onclick="location.href='<%=request.getContextPath()%>/admin/alumnos/nuevo.html';" type="button"><i class="fa fa-user"> Nuevo Alumno</i>
                                                 </button></div>
                         <div class="col-6">
                                             <input class="" name="patron" type="text" value="${param.patron}">

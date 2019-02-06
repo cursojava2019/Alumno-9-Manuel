@@ -81,6 +81,7 @@
                                         </c:set> </c:if>
                                         <div class="form-group">
                                             <div class="checkbox">
+                                            <label>Repetidor</label>
                                                 <label>
                                                     <form:checkbox path="repetidor"/>
                                                     <form:errors path="repetidor" element="div" cssClass="alert alert-danger"/>

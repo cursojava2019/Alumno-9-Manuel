@@ -55,7 +55,7 @@
                         <div class="col-6">
                         <label>Buscar Profesor</label>
                         </div>
-                        <div style="float:right;">  <button class="btn btn-default"  onclick="location.href='<%=request.getContextPath()%>/admin/profesores/nuevo.html';" type="button"><i class="fa fa-user"> Nuevo Usuario</i>
+                        <div style="float:right;">  <button class="btn btn-default"  onclick="location.href='<%=request.getContextPath()%>/admin/profesores/nuevo.html';" type="button"><i class="fa fa-user"> Nuevo Profesor</i>
                                                 </button></div>
                         <div class="col-6">
                                             <input class="" name="patron" type="text" value="${param.patron}">
