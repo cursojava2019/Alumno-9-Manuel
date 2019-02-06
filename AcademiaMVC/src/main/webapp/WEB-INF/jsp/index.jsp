@@ -29,9 +29,9 @@
                                     <div class="huge">26</div>
                                     <div>
 
-<form action="./login.html" method="post">
-<p><label>usuario</label><input name="usuario" type="text"></p>
-<p><label>usuario</label><input name="password" type="password"></p>
+<form action="./j_spring_security_check" method="post">
+<p><label>usuario</label><input name="j_username" type="text"></p>
+<p><label>contraseña</label><input name="j_password" type="password"></p>
 <button type="submit">Identificar</button>
 </form></div>
                                 </div>

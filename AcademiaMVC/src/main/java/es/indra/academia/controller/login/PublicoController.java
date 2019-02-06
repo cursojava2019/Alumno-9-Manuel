@@ -31,4 +31,9 @@ public class PublicoController {
 	public String indexAdmin() {
 		return "inicio";
 	}
+
+	@RequestMapping(value = "/admin/sinPermisos.html", method = RequestMethod.GET)
+	public String sinPermisos() {
+		return "sinPermisos";
+	}
 }

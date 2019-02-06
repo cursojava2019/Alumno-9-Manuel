@@ -5,6 +5,7 @@
     pageEncoding="ISO-8859-1"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 
 <html>
@@ -36,6 +37,8 @@
                                 
                                     	<form:form action="./nuevo.html" method="post" modelAttribute="alumno" >
                                     	<form:hidden path="id" />
+                                    	
+                                    	<spring:hasBindErrors name="*"> HAY ERRORRES QUE RESOLVER</spring:hasBindErrors>
                                        
                                         <div class="form-group">
                                             <label>NIF</label>
@@ -44,19 +47,19 @@
                                             <p class="help-block"></p>
                                         </div>
                                         <div class="form-group">
-                                            <label>Nombre</label>
+                                            <label><spring:message code="alumno.nombre"/></label>
                                              <form:input path="nombre" class="form-control"/>
                                              <form:errors path="nombre" element="div" cssClass="alert alert-danger"/>
                                             <p class="help-block"></p>
                                         </div>
                                         <div class="form-group">
-                                            <label>Primer Apellido </label>
+                                            <label><spring:message code="alumno.apellido1"/> </label>
                                             <form:input path="apellido1" class="form-control"/>
                                             <form:errors path="apellido1" element="div" cssClass="alert alert-danger"/>
                                             <p class="help-block"></p>
                                         </div>
                                         <div class="form-group">
-                                            <label>Segundo Apellido</label>
+                                            <label><spring:message code="alumno.apellido2"/></label>
                                              <form:input path="apellido2" class="form-control"/>
                                             <form:errors path="apellido2" element="div" cssClass="alert alert-danger"/>
                                             <p class="help-block"></p>
