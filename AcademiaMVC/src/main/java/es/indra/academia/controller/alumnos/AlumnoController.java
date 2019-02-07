@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import es.indra.academia.authentication.MyUserDetails;
 import es.indra.academia.model.entities.Alumno;
 import es.indra.academia.model.service.AlumnoService;
 
@@ -31,6 +33,9 @@ public class AlumnoController {
 
 	@RequestMapping(value = "/listado.html", method = RequestMethod.GET)
 	public String listado(Model model) {
+		MyUserDetails user = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String name = user.getUsername(); // get logged in username
+
 		this.log.info("listado Alumnos");
 		List<Alumno> listado = this.alumnoService.findAll();
 		model.addAttribute("listado", listado);

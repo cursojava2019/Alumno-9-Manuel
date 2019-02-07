@@ -1,21 +1,11 @@
-<%@page import="java.util.ArrayList"%>
-<%@page import="es.indra.academia.controller.profesores.ProfesorForm"%>
-<%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" 	prefix="form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
-<html>
-<c:import url="../plantilla/head.jsp"></c:import>
-<body>
-
-    <div id="wrapper">
-
-        <!-- Navigation -->
-        <c:import url="../plantilla/cabecera.jsp"></c:import>
-        <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Nuevo Profesor</h1>
@@ -92,11 +82,3 @@
                     <!-- /.panel -->
             </div>            
             </div>
-        </div>
-        <!-- /#page-wrapper -->
-
-    </div>
-    <!-- /#wrapper -->
-	<c:import url="../plantilla/javascriptPie.jsp"></c:import>
-</body>
-</html>

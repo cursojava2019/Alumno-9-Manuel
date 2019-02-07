@@ -1,22 +1,10 @@
-<%@page import="java.util.ArrayList"%>
-<%@page import="es.indra.academia.controller.alumnos.AlumnoForm"%>
-<%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" 	prefix="form"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
-<html>
-<%@include file="../plantilla/head.jsp" %>
-<body>
-
-    <div id="wrapper">
-
-        <!-- Navigation -->
-        <%@include file="../plantilla/cabecera.jsp" %>
-        <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Nuevo Alumno</h1>
@@ -108,21 +96,5 @@
                         <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->
-            
             </div>
-            
-            
             </div>
-            
-            
-            
-        </div>
-        <!-- /#page-wrapper -->
-
-    </div>
-    <!-- /#wrapper -->
-
-   <%@include file="../plantilla/javascriptPie.jsp" %>
-
-</body>
-</html>

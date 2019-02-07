@@ -69,16 +69,23 @@
 
 	  <context:annotation-config />
 <!-- 	<tx:annotation-driven mode="proxy" transaction-manager="transactionManager"/> -->
- 	 
-    <bean id="viewResolver"
-    	      class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
-              <property name="prefix">
-                  <value>/WEB-INF/jsp/</value>
-               </property>
-              <property name="suffix">
-                 <value>.jsp</value>
-              </property>
-        </bean>
+ 	 <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="requestContextAttribute" value="requestContext"/>
+		<property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView"/>
+	</bean>
+
+      <!-- Tiles2 configuration -->
+	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+        <property name="definitions">
+            <list>
+                <value>/WEB-INF/spring/tiles-defs.xml</value>
+            </list>
+        </property>
+    </bean>
+	
+	
+        
+        	 
 	
    <bean id="validadorMensajes" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
    <property name="validationMessageSource" ref="messageSource"></property>

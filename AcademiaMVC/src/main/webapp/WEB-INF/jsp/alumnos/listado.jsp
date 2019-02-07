@@ -1,16 +1,10 @@
-<%@page import="java.util.ArrayList"%>
-<%@page import="es.indra.academia.model.entities.Alumno"%>
-<%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
- <%
- 
-  String texto="Texto muy guay";
-  session.setAttribute("texto", texto);
- 
- %>
-   
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" 	prefix="form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
     
 <c:if test="${param.mensaje eq 'correcto'}">
  <c:set var="mensajeOK" value="true" ></c:set>
@@ -19,18 +13,7 @@
 <c:if test="${param.mensaje=='errorId'}">
  <c:set var="mensajeError" value="true" ></c:set>
 </c:if>
-<!DOCTYPE html>
-<html>
-<c:import url="../plantilla/head.jsp"></c:import>
 
-<body>
-
-<c:out  value=""></c:out>
-    <div id="wrapper">
-
-        <!-- Navigation -->
-        <%@include file="../plantilla/cabecera.jsp" %>
-        <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Alumnos</h1>
@@ -58,12 +41,12 @@
                         </div>
                         
                         <form name="buscador" action="./listado.html" method="post">
-                        <div class="">
                         <div class="col-6">
                         <label>Buscar Alumno</label>
                         </div>
-                        <div style="float:right;">  <button class="btn btn-default"  onclick="location.href='<%=request.getContextPath()%>/admin/alumnos/nuevo.html';" type="button"><i class="fa fa-user"> Nuevo Alumno</i>
-                                                </button></div>
+                        <div style="float:right;">  
+                        	<button class="btn btn-default"  onclick="location.href='<%=request.getContextPath()%>/admin/alumnos/nuevo.html';" type="button"><i class="fa fa-user"> Nuevo Alumno</i></button>
+                        </div>
                         <div class="col-6">
                                             <input class="" name="patron" type="text" value="${param.patron}">
                                             <span class="">
@@ -76,7 +59,7 @@
                                             
                                            </c:if>
                                             </div>
-                                        </div>
+                         </div>
                                         
                                         
                         </form>
@@ -114,20 +97,11 @@
             
             
             </div>
-            
-            
-            
-        </div>
-        <!-- /#page-wrapper -->
-
-    </div>
-    <!-- /#wrapper -->
-
-   <%@include file="../plantilla/javascriptPie.jsp" %>
 	 <script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
-            responsive: true
+            responsive: true,
+            "searching": false
         });
         setTimeout(function() {
             $("#mensaje").toggle(2000);
@@ -144,6 +118,3 @@
 		}
 	}
 	</script>
-	
-</body>
-</html>
