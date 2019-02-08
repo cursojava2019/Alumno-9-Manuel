@@ -65,6 +65,21 @@
 		<put-attribute name="content" value="/WEB-INF/jsp/alumnos/modificar.jsp" />
 	</definition>
 	
+	<!-- 	Profesores -->
+	<definition name="profesores/listado" extends=".mainTemplate">
+		<put-attribute name="title" value="Listado de Profesores" type="string" />
+		<put-attribute name="content" value="/WEB-INF/jsp/profesores/listado.jsp" />
+	</definition>
+	<definition name="profesores/nuevo" extends=".mainTemplate">
+		<put-attribute name="title" value="Crear Profesores" type="string" />
+		<put-attribute name="content" value="/WEB-INF/jsp/profesores/nuevo.jsp" />
+		
+	</definition>
+	<definition name="profesores/modificar" extends=".mainTemplate">
+		<put-attribute name="title" value="Modificar Profesores" type="string" />
+		<put-attribute name="content" value="/WEB-INF/jsp/profesores/modificar.jsp" />
+	</definition>
+	
 	
 	
 	
