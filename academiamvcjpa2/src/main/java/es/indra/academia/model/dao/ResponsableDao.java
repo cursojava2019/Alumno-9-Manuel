@@ -6,27 +6,26 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
 import es.indra.academia.configuration.Configuracion;
-import es.indra.academia.model.entities.Alumno;
+import es.indra.academia.model.entities.ResponsableAlumno;
 import es.indra.academia.model.support.Dao;
 import es.indra.academia.model.support.DaoException;
 
 @Repository
-public class AlumnoDao implements Dao<Long, Alumno> {
+public class ResponsableDao implements Dao<Long, ResponsableAlumno> {
 
-	private static final String CAMPOS = "nif,nombre,apellido1,apellido2,telefono,correo,repetidor,fechaalta,fechabaja,observaciones";
+	private static final String CAMPOS = "nif,nombre,apellido1,apellido2,telefono,correo";
 
 	@Override
-	public void create(Alumno entity) throws DaoException {
+	public void create(ResponsableAlumno entity) throws DaoException {
 		try {
 			Connection co = Configuracion.getInstance().obtenerConexionBD();
 			PreparedStatement p = co
-					.prepareStatement("INSERT INTO ALUMNO(" + CAMPOS + ") VALUES (?,?,?,?,?,?,?,?,?,?) ");
+					.prepareStatement("INSERT INTO RESPONSABLE_ALUMNO(" + CAMPOS + ") VALUES (?,?,?,?,?,?) ");
 
 			p.setString(1, entity.getNif());
 			p.setString(2, entity.getNombre());
@@ -34,18 +33,7 @@ public class AlumnoDao implements Dao<Long, Alumno> {
 			p.setString(4, entity.getApellido2());
 			p.setString(5, entity.getTelefono());
 			p.setString(6, entity.getCorreo());
-			p.setBoolean(7, entity.getRepetidor());
-			if (entity.getFechaAlta() != null) {
-				p.setDate(8, new java.sql.Date(entity.getFechaAlta().getTime()));
-			} else {
-				p.setDate(8, null);
-			}
-			if (entity.getFechaBaja() != null) {
-				p.setDate(9, new java.sql.Date(entity.getFechaBaja().getTime()));
-			} else {
-				p.setDate(9, null);
-			}
-			p.setString(10, entity.getObservaciones());
+
 			p.executeUpdate();
 			co.close();
 		} catch (SQLException e) {
@@ -57,13 +45,12 @@ public class AlumnoDao implements Dao<Long, Alumno> {
 	}
 
 	@Override
-	public void update(Alumno entity) throws DaoException {
+	public void update(ResponsableAlumno entity) throws DaoException {
 
 		try {
 			Connection co = Configuracion.getInstance().obtenerConexionBD();
-			PreparedStatement p = co.prepareStatement("UPDATE ALUMNO " + "SET nif=?," + "nombre=?," + "apellido1=?,"
-					+ "apellido2=?," + "telefono=?," + "correo=?," + "repetidor=?," + "fechaalta=?," + "fechabaja=?,"
-					+ "observaciones=?  WHERE id=?;");
+			PreparedStatement p = co.prepareStatement("UPDATE RESPONSABLE_ALUMNO " + "SET nif=?," + "nombre=?,"
+					+ "apellido1=?," + "apellido2=?," + "telefono=?," + "correo=?," + "WHERE id=?;");
 
 			p.setLong(11, entity.getId());
 			p.setString(1, entity.getNif());
@@ -72,18 +59,7 @@ public class AlumnoDao implements Dao<Long, Alumno> {
 			p.setString(4, entity.getApellido2());
 			p.setString(5, entity.getTelefono());
 			p.setString(6, entity.getCorreo());
-			p.setBoolean(7, entity.getRepetidor());
-			if (entity.getFechaAlta() != null) {
-				p.setDate(8, new java.sql.Date(entity.getFechaAlta().getTime()));
-			} else {
-				p.setDate(8, null);
-			}
-			if (entity.getFechaBaja() != null) {
-				p.setDate(9, new java.sql.Date(entity.getFechaBaja().getTime()));
-			} else {
-				p.setDate(9, null);
-			}
-			p.setString(10, entity.getObservaciones());
+
 			p.executeUpdate();
 			co.close();
 		} catch (SQLException e) {
@@ -98,7 +74,7 @@ public class AlumnoDao implements Dao<Long, Alumno> {
 	public void delete(Long key) throws DaoException {
 		try {
 			Connection co = Configuracion.getInstance().obtenerConexionBD();
-			PreparedStatement p = co.prepareStatement("DELETE FROM ALUMNO WHERE id=?");
+			PreparedStatement p = co.prepareStatement("DELETE FROM RESPONSABLE_ALUMNO WHERE id=?");
 
 			p.setLong(1, key);
 			p.executeUpdate();
@@ -112,17 +88,17 @@ public class AlumnoDao implements Dao<Long, Alumno> {
 	}
 
 	@Override
-	public Alumno find(Long key) throws DaoException {
-		Alumno alumno = null;
+	public ResponsableAlumno find(Long key) throws DaoException {
+		ResponsableAlumno alumno = null;
 		try {
 			Connection co = Configuracion.getInstance().obtenerConexionBD();
-			String query = "SELECT id," + CAMPOS + " FROM ALUMNO WHERE id=?";
+			String query = "SELECT id," + CAMPOS + " FROM RESPONSABLE_ALUMNO WHERE id=?";
 			PreparedStatement instruccion = co.prepareStatement(query);
 
 			instruccion.setLong(1, key);
 			ResultSet resultados = instruccion.executeQuery();
 			if (resultados.next()) {
-				alumno = obtenerAlumno(resultados);
+				alumno = obtenerResponsableAlumno(resultados);
 
 			}
 			co.close();
@@ -135,19 +111,19 @@ public class AlumnoDao implements Dao<Long, Alumno> {
 	}
 
 	@Override
-	public List<Alumno> findAll() throws DaoException {
+	public List<ResponsableAlumno> findAll() throws DaoException {
 		try {
 			Connection co = Configuracion.getInstance().obtenerConexionBD();
 			Statement instruccion = co.createStatement();
 
-			String query = "SELECT id," + CAMPOS + " FROM ALUMNO";
+			String query = "SELECT id," + CAMPOS + " FROM RESPONSABLE_ALUMNO";
 			ResultSet resultados = instruccion.executeQuery(query);
 
-			ArrayList<Alumno> listado = new ArrayList<Alumno>();
+			ArrayList<ResponsableAlumno> listado = new ArrayList<ResponsableAlumno>();
 
 			while (resultados.next()) {
 
-				Alumno alumno = obtenerAlumno(resultados);
+				ResponsableAlumno alumno = obtenerResponsableAlumno(resultados);
 
 				listado.add(alumno);
 			}
@@ -161,7 +137,7 @@ public class AlumnoDao implements Dao<Long, Alumno> {
 		}
 	}
 
-	private Alumno obtenerAlumno(ResultSet resultado) throws SQLException {
+	private ResponsableAlumno obtenerResponsableAlumno(ResultSet resultado) throws SQLException {
 
 		Long id = resultado.getLong(1);
 		String nif = resultado.getString(2);
@@ -170,12 +146,8 @@ public class AlumnoDao implements Dao<Long, Alumno> {
 		String apellido2 = resultado.getString(5);
 		String telefono = resultado.getString(6);
 		String correo = resultado.getString(7);
-		Boolean repetidor = resultado.getBoolean(8);
-		Date fechaAlta = resultado.getDate(9);
-		Date fechaBaja = resultado.getDate(10);
-		String observaciones = resultado.getString(11);
 
-		Alumno alumno = new Alumno();
+		ResponsableAlumno alumno = new ResponsableAlumno();
 		alumno.setId(id);
 		alumno.setNif(nif);
 		alumno.setNombre(nombre);
@@ -183,30 +155,26 @@ public class AlumnoDao implements Dao<Long, Alumno> {
 		alumno.setApellido2(apellido2);
 		alumno.setTelefono(telefono);
 		alumno.setCorreo(correo);
-		alumno.setFechaAlta(fechaAlta);
-		alumno.setFechaBaja(fechaBaja);
-		alumno.setRepetidor(repetidor);
-		alumno.setObservaciones(observaciones);
 
 		return alumno;
 	}
 
-	public List<Alumno> findAlumnos(String patron) throws DaoException {
+	public List<ResponsableAlumno> findResponsableAlumno(String patron) throws DaoException {
 
 		try {
 			Connection co = Configuracion.getInstance().obtenerConexionBD();
 			Statement instruccion = co.createStatement();
 
-			String query = "SELECT id," + CAMPOS + " FROM ALUMNO WHERE LOWER(nif) like LOWER('%" + patron
+			String query = "SELECT id," + CAMPOS + " FROM RESPONSABLE_ALUMNO WHERE LOWER(nif) like LOWER('%" + patron
 					+ "%') OR LOWER(nombre) like LOWER('%" + patron + "%') OR LOWER(apellido1) like LOWER('%" + patron
 					+ "%')  OR LOWER(apellido2) like LOWER('%" + patron + "%') ;";
 			ResultSet resultados = instruccion.executeQuery(query);
 
-			ArrayList<Alumno> listado = new ArrayList<Alumno>();
+			ArrayList<ResponsableAlumno> listado = new ArrayList<ResponsableAlumno>();
 
 			while (resultados.next()) {
 
-				Alumno alumno = obtenerAlumno(resultados);
+				ResponsableAlumno alumno = obtenerResponsableAlumno(resultados);
 
 				listado.add(alumno);
 			}
@@ -220,19 +188,19 @@ public class AlumnoDao implements Dao<Long, Alumno> {
 		}
 	}
 
-	public List<Alumno> buscarNif(String nif) throws DaoException {
+	public List<ResponsableAlumno> buscarNif(String nif) throws DaoException {
 
-		Alumno alumno = null;
+		ResponsableAlumno alumno = null;
 		try {
 			Connection co = Configuracion.getInstance().obtenerConexionBD();
-			String query = "SELECT id," + CAMPOS + " FROM ALUMNO WHERE nif=?";
+			String query = "SELECT id," + CAMPOS + " FROM RESPONSABLE_ALUMNO WHERE nif=?";
 			PreparedStatement instruccion = co.prepareStatement(query);
 
 			instruccion.setString(1, nif);
 			ResultSet resultados = instruccion.executeQuery();
-			ArrayList<Alumno> listado = new ArrayList<Alumno>();
+			ArrayList<ResponsableAlumno> listado = new ArrayList<ResponsableAlumno>();
 			if (resultados.next()) {
-				alumno = obtenerAlumno(resultados);
+				alumno = obtenerResponsableAlumno(resultados);
 				listado.add(alumno);
 			}
 			co.close();
@@ -243,4 +211,5 @@ public class AlumnoDao implements Dao<Long, Alumno> {
 			throw new DaoException();
 		}
 	}
+
 }

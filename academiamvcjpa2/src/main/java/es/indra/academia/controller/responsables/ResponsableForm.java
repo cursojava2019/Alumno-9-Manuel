@@ -1,17 +1,14 @@
-package es.indra.academia.controller.alumnos;
-
-import java.util.Date;
+package es.indra.academia.controller.responsables;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
-import es.indra.academia.model.entities.Alumno;
+import es.indra.academia.model.entities.Profesor;
 
-public class AlumnoForm {
+public class ResponsableForm {
 	@Positive
 	private Long id;
 	@NotNull
@@ -30,15 +27,10 @@ public class AlumnoForm {
 	@Email
 	@NotEmpty
 	private String correo;
-	private Boolean repetidor;
-	@PastOrPresent
-	private Date fechaAlta;
-
-	private Date fechaBaja;
 	@Size(min = 0, max = 500)
-	private String observaciones;
+	private String titulacion;
 
-	public AlumnoForm() {
+	public ResponsableForm() {
 		super();
 		this.nif = "";
 		this.nombre = "";
@@ -46,11 +38,10 @@ public class AlumnoForm {
 		this.apellido2 = "";
 		this.telefono = "";
 		this.correo = "";
-		this.observaciones = "";
-		this.repetidor = false;
+		this.titulacion = "";
 	}
 
-	public AlumnoForm(Alumno a) {
+	public ResponsableForm(Profesor a) {
 		super();
 		this.id = a.getId();
 		this.nif = (a.getNif());
@@ -59,14 +50,11 @@ public class AlumnoForm {
 		this.apellido2 = (a.getApellido2());
 		this.telefono = (a.getTelefono());
 		this.correo = (a.getCorreo());
-		this.observaciones = (a.getObservaciones());
-		this.repetidor = (a.getRepetidor());
-		this.fechaAlta = (a.getFechaAlta());
-		this.fechaBaja = (a.getFechaBaja());
+		this.titulacion = (a.getTitulacion());
 	}
 
-	public Alumno obtenerAlumno() {
-		Alumno a = new Alumno();
+	public Profesor obtenerProfesor() {
+		Profesor a = new Profesor();
 		a.setId(getId());
 		a.setNif(getNif());
 		a.setNombre(getNombre());
@@ -74,10 +62,8 @@ public class AlumnoForm {
 		a.setApellido2(getApellido2());
 		a.setTelefono(getTelefono());
 		a.setCorreo(getCorreo());
-		a.setObservaciones(getObservaciones());
-		a.setRepetidor(getRepetidor());
-		a.setFechaAlta(getFechaAlta());
-		a.setFechaBaja(getFechaBaja());
+		a.setTitulacion(getTitulacion());
+
 		return a;
 	}
 
@@ -137,63 +123,11 @@ public class AlumnoForm {
 		this.correo = correo;
 	}
 
-	public Boolean getRepetidor() {
-		return this.repetidor;
+	public String getTitulacion() {
+		return this.titulacion;
 	}
 
-	public void setRepetidor(Boolean repetidor) {
-		this.repetidor = repetidor;
-	}
-
-	public Date getFechaAlta() {
-		return this.fechaAlta;
-	}
-
-	public void setFechaAlta(Date fechaAlta) {
-		this.fechaAlta = fechaAlta;
-	}
-
-	public Date getFechaBaja() {
-		return this.fechaBaja;
-	}
-
-	public void setFechaBaja(Date fechaBaja) {
-		this.fechaBaja = fechaBaja;
-	}
-
-	public String getObservaciones() {
-		return this.observaciones;
-	}
-
-	public void setObservaciones(String observaciones) {
-		this.observaciones = observaciones;
-	}
-
-	public String getFechaAltaString() {
-		if (this.fechaAlta != null) {
-			return Long.toString(this.fechaAlta.getTime());
-		} else {
-			return "";
-		}
-	}
-
-	public String getFechaBajaString() {
-		if (this.fechaBaja != null) {
-			return Long.toString(this.fechaBaja.getTime());
-		} else {
-			return "";
-		}
-	}
-
-	public void setFechaAltaString(String fechaString) {
-		Long timeStamp = Long.parseLong(fechaString);
-		this.fechaAlta = (new Date(timeStamp));
-
-	}
-
-	public void setFechaBajaString(String fechaString) {
-		Long timeStamp = Long.parseLong(fechaString);
-		this.fechaBaja = (new Date(timeStamp));
-
+	public void setTitulacion(String titulacion) {
+		this.titulacion = titulacion;
 	}
 }
