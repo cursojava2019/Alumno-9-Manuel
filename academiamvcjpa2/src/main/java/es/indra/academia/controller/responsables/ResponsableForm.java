@@ -6,7 +6,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
-import es.indra.academia.model.entities.Profesor;
+import es.indra.academia.model.entities.ResponsableAlumno;
 
 public class ResponsableForm {
 	@Positive
@@ -27,8 +27,6 @@ public class ResponsableForm {
 	@Email
 	@NotEmpty
 	private String correo;
-	@Size(min = 0, max = 500)
-	private String titulacion;
 
 	public ResponsableForm() {
 		super();
@@ -38,10 +36,9 @@ public class ResponsableForm {
 		this.apellido2 = "";
 		this.telefono = "";
 		this.correo = "";
-		this.titulacion = "";
 	}
 
-	public ResponsableForm(Profesor a) {
+	public ResponsableForm(ResponsableAlumno a) {
 		super();
 		this.id = a.getId();
 		this.nif = (a.getNif());
@@ -50,11 +47,10 @@ public class ResponsableForm {
 		this.apellido2 = (a.getApellido2());
 		this.telefono = (a.getTelefono());
 		this.correo = (a.getCorreo());
-		this.titulacion = (a.getTitulacion());
 	}
 
-	public Profesor obtenerProfesor() {
-		Profesor a = new Profesor();
+	public ResponsableAlumno obtenerResponsableAlumno() {
+		ResponsableAlumno a = new ResponsableAlumno();
 		a.setId(getId());
 		a.setNif(getNif());
 		a.setNombre(getNombre());
@@ -62,7 +58,6 @@ public class ResponsableForm {
 		a.setApellido2(getApellido2());
 		a.setTelefono(getTelefono());
 		a.setCorreo(getCorreo());
-		a.setTitulacion(getTitulacion());
 
 		return a;
 	}
@@ -121,13 +116,5 @@ public class ResponsableForm {
 
 	public void setCorreo(String correo) {
 		this.correo = correo;
-	}
-
-	public String getTitulacion() {
-		return this.titulacion;
-	}
-
-	public void setTitulacion(String titulacion) {
-		this.titulacion = titulacion;
 	}
 }

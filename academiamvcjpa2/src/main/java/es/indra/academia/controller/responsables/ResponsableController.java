@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import es.indra.academia.authentication.MyUserDetails;
-import es.indra.academia.model.entities.Profesor;
 import es.indra.academia.model.entities.ResponsableAlumno;
 import es.indra.academia.model.service.ResponsableAlumnoService;
 
@@ -45,21 +44,21 @@ public class ResponsableController {
 
 	@RequestMapping(value = "/nuevo.html", method = RequestMethod.GET)
 	public String nuevo(Model model) {
-		model.addAttribute("profesor", new ResponsableForm(new Profesor()));
-		return "profesores/nuevo";
+		model.addAttribute("responsable", new ResponsableForm(new ResponsableAlumno()));
+		return "responsables/nuevo";
 	}
 
 	@RequestMapping(value = "/nuevo.html", method = RequestMethod.POST)
-	public String nuevoPost(@Valid @ModelAttribute("profesor") ResponsableForm form, BindingResult result) {
+	public String nuevoPost(@Valid @ModelAttribute("responsable") ResponsableForm form, BindingResult result) {
 		ArrayList<String> errores = new ArrayList<String>();
 		this.validador.validate(form, result);
 		if (result.hasErrors()) {
-			return "profesores/nuevo";
+			return "responsables/nuevo";
 
 		} else {
 
-			this.profesorService.create(form.obtenerProfesor());
-			return "redirect:/admin/profesores/listado.html?mensaje=correcto";
+			this.profesorService.create(form.obtenerResponsableAlumno());
+			return "redirect:/admin/responsables/listado.html?mensaje=correcto";
 
 		}
 
@@ -68,17 +67,17 @@ public class ResponsableController {
 	@RequestMapping(value = "/modificar.html", method = RequestMethod.GET)
 	public String modificar(@RequestParam("id") Long id, Model model) {
 		if (id == null) {
-			return "redirect:/admin/profesores/listado.html?mensaje=errorId";
+			return "redirect:/admin/responsables/listado.html?mensaje=errorId";
 
 		} else {
-			Profesor profesor = this.profesorService.find(id);
-			if (profesor != null) {
-				ResponsableForm form = new ResponsableForm(profesor);
-				model.addAttribute("profesor", form);
-				return "profesores/modificar";
+			ResponsableAlumno responsable = this.profesorService.find(id);
+			if (responsable != null) {
+				ResponsableForm form = new ResponsableForm(responsable);
+				model.addAttribute("responsable", form);
+				return "responsables/modificar";
 
 			} else {
-				return "redirect:/admin/profesores/listado.html?mensaje=errorId";
+				return "redirect:/admin/responsables/listado.html?mensaje=errorId";
 			}
 
 		}
@@ -86,15 +85,15 @@ public class ResponsableController {
 	}
 
 	@RequestMapping(value = "/modificar.html", method = RequestMethod.POST)
-	public String modificarPost(@Valid @ModelAttribute("profesor") ResponsableForm form, BindingResult result) {
+	public String modificarPost(@Valid @ModelAttribute("responsable") ResponsableForm form, BindingResult result) {
 		this.validador.validate(form, result);
 		if (result.hasErrors()) {
-			return "profesores/modificar";
+			return "responsables/modificar";
 
 		} else {
 
-			this.profesorService.create(form.obtenerProfesor());
-			return "redirect:/admin/profesores/listado.html?mensaje=correcto";
+			this.profesorService.create(form.obtenerResponsableAlumno());
+			return "redirect:/admin/responsables/listado.html?mensaje=correcto";
 
 		}
 
@@ -104,14 +103,14 @@ public class ResponsableController {
 	public String eliminar(@RequestParam("id") Long id, Model model) {
 
 		if (id == null) {
-			return "redirect:/admin/profesores/listado.html?mensaje=errorId";
+			return "redirect:/admin/responsables/listado.html?mensaje=errorId";
 		} else {
-			Profesor profesor = this.profesorService.find(id);
-			if (profesor != null) {
+			ResponsableAlumno responsable = this.profesorService.find(id);
+			if (responsable != null) {
 				this.profesorService.delete(id);
-				return "redirect:/admin/profesores/listado.html?mensaje=correcto";
+				return "redirect:/admin/responsables/listado.html?mensaje=correcto";
 			} else {
-				return "redirect:/admin/profesores/listado.html?mensaje=errorId";
+				return "redirect:/admin/responsables/listado.html?mensaje=errorId";
 			}
 
 		}
