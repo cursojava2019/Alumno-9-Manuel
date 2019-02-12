@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MiComponenteComponent implements OnInit {
   nombre = 'Paco';
+  nombreEntrada = '';
+  textoIntroduccion = 'Introduzca un nombre...';
   constructor() { }
 
   ngOnInit() {
@@ -14,5 +16,9 @@ export class MiComponenteComponent implements OnInit {
 
   cambiarNombre(nuevoNombre: string) {
     this.nombre = nuevoNombre;
+  }
+
+  cambiarNombreEntrada() {
+    this.nombre = this.nombreEntrada;
   }
 }

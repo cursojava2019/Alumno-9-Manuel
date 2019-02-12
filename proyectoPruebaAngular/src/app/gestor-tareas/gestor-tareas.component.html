@@ -1,0 +1,28 @@
+<h2> Lista de Tareas</h2>
+<div class="row">
+<div class="col-3"></div>
+<div class="col-6">
+<div style="height:300px;">
+<div  *ngIf="listado?.length > 0;else sinTareas">
+  <div *ngFor="let item of listado">
+
+    <input type="checkbox"[(ngModel)]="item.hecho" />
+
+    <span *ngIf="item.hecho; else notachado" class="tachado">{{item.nombre}}</span>
+
+    <ng-template #notachado>
+        <span style="font-size:1.5em"> {{item.nombre}}</span>
+    </ng-template>
+
+    <span [class.tachado]="item.hecho"> </span>
+  </div>
+</div>
+<ng-template #sinTareas>
+    <div >No hay tareas</div>
+</ng-template>
+<hr/>
+<input text [(ngModel)]="tareaEntrada"/>
+<button (click) ="crearTarea()">Añadir Tarea</button>
+{{listado}}
+</div>
+</div>
