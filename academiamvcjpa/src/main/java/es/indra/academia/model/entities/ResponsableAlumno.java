@@ -6,12 +6,13 @@ import java.util.List;
 
 
 /**
- * The persistent class for the profesor database table.
+ * The persistent class for the responsable_alumno database table.
  * 
  */
 @Entity
-@NamedQuery(name="Profesor.findAll", query="SELECT p FROM Profesor p")
-public class Profesor implements Serializable {
+@Table(name="responsable_alumno")
+@NamedQuery(name="ResponsableAlumno.findAll", query="SELECT r FROM ResponsableAlumno r")
+public class ResponsableAlumno implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -30,13 +31,11 @@ public class Profesor implements Serializable {
 
 	private String telefono;
 
-	private String titulacion;
+	//bi-directional many-to-one association to Alumno
+	@OneToMany(mappedBy="responsable", fetch=FetchType.EAGER)
+	private List<Alumno> alumnos;
 
-	//bi-directional many-to-one association to Clase
-	@OneToMany(mappedBy="profesor", cascade={CascadeType.PERSIST, CascadeType.MERGE}, fetch=FetchType.EAGER)
-	private List<Clase> clases;
-
-	public Profesor() {
+	public ResponsableAlumno() {
 	}
 
 	public Long getId() {
@@ -95,34 +94,26 @@ public class Profesor implements Serializable {
 		this.telefono = telefono;
 	}
 
-	public String getTitulacion() {
-		return this.titulacion;
+	public List<Alumno> getAlumnos() {
+		return this.alumnos;
 	}
 
-	public void setTitulacion(String titulacion) {
-		this.titulacion = titulacion;
+	public void setAlumnos(List<Alumno> alumnos) {
+		this.alumnos = alumnos;
 	}
 
-	public List<Clase> getClases() {
-		return this.clases;
+	public Alumno addAlumno(Alumno alumno) {
+		getAlumnos().add(alumno);
+		alumno.setResponsable(this);
+
+		return alumno;
 	}
 
-	public void setClases(List<Clase> clases) {
-		this.clases = clases;
-	}
+	public Alumno removeAlumno(Alumno alumno) {
+		getAlumnos().remove(alumno);
+		alumno.setResponsable(null);
 
-	public Clase addClas(Clase clas) {
-		getClases().add(clas);
-		clas.setProfesor(this);
-
-		return clas;
-	}
-
-	public Clase removeClas(Clase clas) {
-		getClases().remove(clas);
-		clas.setProfesor(null);
-
-		return clas;
+		return alumno;
 	}
 
 }
