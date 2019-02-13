@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../model/task';
-
+import {TaskServiceService} from '../services/task-service.service';
 @Component({
   selector: 'app-gestor-tareas',
   templateUrl: './gestor-tareas.component.html',
-  styleUrls: ['./gestor-tareas.component.css']
+  styleUrls: ['./gestor-tareas.component.css'],
+  providers: [TaskServiceService]
 })
 export class GestorTareasComponent implements OnInit {
-  listado: Array<Task>;
   tareaEntrada: string;
-  constructor() {
-    this.listado = new Array<Task>();
+  constructor(private taskService: TaskServiceService) {
   }
 
   ngOnInit() {
@@ -19,12 +18,15 @@ export class GestorTareasComponent implements OnInit {
   crearTarea() {
     if (this.tareaEntrada !== '') {
       const tarea: Task = new Task(false, this.tareaEntrada);
-      this.listado.push(tarea);
+      this.taskService.add(tarea);
     }
   }
 
   eliminarTarea(indice: number) {
     console.log('El indice a borrar es: ' + indice);
-    this.listado.splice(indice, 1);
+    this.taskService.deleteTarea(indice);
   }
+  listarTareas() {
+    return this.taskService.findAll();
+   }
 }

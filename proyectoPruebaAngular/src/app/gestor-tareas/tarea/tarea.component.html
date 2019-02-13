@@ -1,0 +1,10 @@
+<input type="checkbox"[(ngModel)]="tarea.hecho" />
+
+    <span *ngIf="tarea.hecho; else notachado" class="tachado">{{tarea.nombre}}</span>
+
+    <ng-template #notachado>
+        <span style="font-size:1.5em"> {{tarea.nombre}}</span>
+    </ng-template>
+
+    <span [class.tachado]="tarea.hecho"> </span>
+    <button (click)="solicitarEliminar()">Borrar esta tarea</button>
