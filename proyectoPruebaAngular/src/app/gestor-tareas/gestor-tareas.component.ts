@@ -22,4 +22,9 @@ export class GestorTareasComponent implements OnInit {
       this.listado.push(tarea);
     }
   }
+
+  eliminarTarea(indice: number) {
+    console.log('El indice a borrar es: ' + indice);
+    this.listado.splice(indice, 1);
+  }
 }

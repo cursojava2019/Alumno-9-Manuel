@@ -4,8 +4,7 @@
 <div class="col-6">
 <div style="height:300px;">
 <div  *ngIf="listado?.length > 0;else sinTareas">
-  <div *ngFor="let item of listado">
-
+  <div *ngFor="let item of listado; let i=index">
     <input type="checkbox"[(ngModel)]="item.hecho" />
 
     <span *ngIf="item.hecho; else notachado" class="tachado">{{item.nombre}}</span>
@@ -15,6 +14,7 @@
     </ng-template>
 
     <span [class.tachado]="item.hecho"> </span>
+    <button (click)="eliminarTarea(i)">Borrar esta tarea</button>
   </div>
 </div>
 <ng-template #sinTareas>
