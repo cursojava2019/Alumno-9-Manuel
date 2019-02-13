@@ -1,0 +1,14 @@
+<div class="text-center">
+  <h2>{{empleado.nombre}}</h2>
+  <h2>{{empleado.edad}}</h2>
+    <p *ngIf="empleado.edad >= 18; else menor">El usuario es mayor de edad</p>
+    <ng-template #menor>
+      <p>El usuario es menor de edad</p>
+    </ng-template>
+    <table style="border: 1px solid">
+        <tr *ngFor="let sala of empleado.salario">
+            <td>{{sala}}</td>
+        </tr>
+    </table>
+
+</div>
