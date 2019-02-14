@@ -31,7 +31,7 @@ public class UsuarioDao implements Dao<Long, Usuario> {
 		usuario.setUsuario("usuario2");
 		usuario.setClave("password2");
 		usuario.setHabilitado(true);
-		usuario.setPermisos("PROFESORES");
+		usuario.setPermisos("PROFESORES;RESPONSABLES");
 		this.listado.put("usuario2", usuario);
 
 		usuario = new Usuario();
@@ -39,7 +39,7 @@ public class UsuarioDao implements Dao<Long, Usuario> {
 		usuario.setUsuario("usuario3");
 		usuario.setClave("password3");
 		usuario.setHabilitado(true);
-		usuario.setPermisos("ALUMNOS;PROFESORES");
+		usuario.setPermisos("ALUMNOS;PROFESORES;RESPONSABLES");
 		this.listado.put("usuario3", usuario);
 	}
 

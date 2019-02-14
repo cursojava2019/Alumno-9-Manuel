@@ -25,7 +25,7 @@ public class ResponsableDao implements Dao<Long, ResponsableAlumno> {
 		try {
 			Connection co = Configuracion.getInstance().obtenerConexionBD();
 			PreparedStatement p = co
-					.prepareStatement("INSERT INTO RESPONSABLE_ALUMNO(" + CAMPOS + ") VALUES (?,?,?,?,?,?,?) ");
+					.prepareStatement("INSERT INTO RESPONSABLE_ALUMNO(" + CAMPOS + ") VALUES (?,?,?,?,?,?) ");
 
 			p.setString(1, entity.getNif());
 			p.setString(2, entity.getNombre());
@@ -49,7 +49,7 @@ public class ResponsableDao implements Dao<Long, ResponsableAlumno> {
 		try {
 			Connection co = Configuracion.getInstance().obtenerConexionBD();
 			PreparedStatement p = co.prepareStatement("UPDATE RESPONSABLE_ALUMNO " + "SET nif=?," + "nombre=?,"
-					+ "apellido1=?," + "apellido2=?," + "telefono=?," + "correo=?," + "titulacion=?  WHERE id=?;");
+					+ "apellido1=?," + "apellido2=?," + "telefono=?," + "correo=?" + " WHERE id=?;");
 
 			p.setLong(8, entity.getId());
 			p.setString(1, entity.getNif());

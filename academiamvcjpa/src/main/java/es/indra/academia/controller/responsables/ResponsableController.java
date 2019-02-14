@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import es.indra.academia.authentication.MyUserDetails;
-import es.indra.academia.controller.profesores.ProfesorController;
 import es.indra.academia.controller.profesores.ProfesorFormValidator;
 import es.indra.academia.model.entities.ResponsableAlumno;
 import es.indra.academia.model.service.ResponsableService;
@@ -31,7 +30,7 @@ public class ResponsableController {
 
 	@Autowired
 	ProfesorFormValidator validador;
-	private Logger log = LogManager.getLogger(ProfesorController.class);
+	private Logger log = LogManager.getLogger(ResponsableController.class);
 
 	@RequestMapping(value = "/listado.html", method = RequestMethod.GET)
 	public String listado(Model model) {
@@ -72,9 +71,9 @@ public class ResponsableController {
 			return "redirect:/admin/responsables/listado.html?mensaje=errorId";
 
 		} else {
-			ResponsableAlumno profesor = this.responsableService.find(id);
-			if (profesor != null) {
-				ResponsableForm form = new ResponsableForm(profesor);
+			ResponsableAlumno responsable = this.responsableService.find(id);
+			if (responsable != null) {
+				ResponsableForm form = new ResponsableForm(responsable);
 				model.addAttribute("responsable", form);
 				return "responsables/modificar";
 

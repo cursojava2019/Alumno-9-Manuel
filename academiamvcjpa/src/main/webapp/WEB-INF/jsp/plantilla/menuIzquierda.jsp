@@ -32,7 +32,11 @@
                            <a href="<%=request.getContextPath()%>/admin/profesores/listado.html"><i class="fa fa-bar-chart-o fa-fw"></i> Gestión de Profesores</a>
                         </li>
                          </sec:authorize>
-                        
+                        <sec:authorize access="hasRole('RESPONSABLES')">
+                        <li>
+                           <a href="<%=request.getContextPath()%>/admin/responsables/listado.html"><i class="fa fa-bar-chart-o fa-fw"></i> Gestión de Responsables</a>
+                        </li>
+                         </sec:authorize>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
