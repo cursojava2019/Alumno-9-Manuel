@@ -18,7 +18,8 @@ export class TaskServiceService {
     this.listado.push(tarea);
   }
   addSimple(nombre: string , estado: boolean) {
-    let tarea = new Task( estado, nombre);
+    let tarea = null;
+    tarea = new Task( estado, nombre);
     this.listado.push(tarea);
   }
   findAll() {

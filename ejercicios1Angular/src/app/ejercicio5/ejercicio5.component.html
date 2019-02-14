@@ -1,0 +1,25 @@
+<form name="calculator">
+
+    <p>Haz algun calculo para ver el resultado.</p>
+    <input type="textfield" name="ans" value={{operacion}}>
+    <br>
+    <input type="button" value="1" (click)="operar(1)">
+    <input type="button" value="2" (click)="operar(2)">
+    <input type="button" value="3" (click)="operar(3)">
+    <input type="button" value="+" (click)="operar('+')">
+    <br>
+    <input type="button" value="4" (click)="operar(4)">
+    <input type="button" value="5" (click)="operar(5)">
+    <input type="button" value="6" (click)="operar(6)">
+    <input type="button" value="-" (click)="operar('-')">
+    <br>
+    <input type="button" value="7" (click)="operar(7)">
+    <input type="button" value="8" (click)="operar(8)">
+    <input type="button" value="9" (click)="operar(9)">
+    <input type="button" value="*" (click)="operar('*')">
+    <br>
+    <input type="button" value="0" (click)="operar(0)">
+    <input type="reset" value="c" (click)="limpiar()">
+    <input type="button" value="/" (click)="operar('/')">
+    <input type="button" value="=" (click)="igual()">
+    </form>

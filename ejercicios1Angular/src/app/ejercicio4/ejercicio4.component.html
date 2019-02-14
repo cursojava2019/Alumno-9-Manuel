@@ -1,0 +1,12 @@
+<div style="text-align: center">
+  <h2>Ejercicio 4</h2>
+    <input type="text" [(ngModel)]="nombre" placeholder="Nombre">
+
+  <div *ngIf="nombre?.length >= 8 && nombre; else mensaje">
+      <input type="password" [(ngModel)]="pass" placeholder="Contraseña">
+      <button *ngIf="nombre == pass && nombre " type="submit" value="enviar">Enviar</button>
+  </div>
+  <ng-template #mensaje>
+      <p>Debes introducir un nombre de minimo 8 caracteres</p>
+    </ng-template>
+</div>
