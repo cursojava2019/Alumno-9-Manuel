@@ -17,7 +17,7 @@ export class Ejercicio5Component implements OnInit {
   }
   operar(num: string) {
     let tri: number;
-    tri = parseInt(num, 2);
+    tri = parseInt(num, 10);
     this.operacion += num;
     console.log(this.operacion);
   }
