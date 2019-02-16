@@ -59,10 +59,8 @@ export class FormularioAlumnoComponent implements OnInit {
   }
 
   guardarCambios() {
-    console.log('guardar cambios');
     const alumnoForm: Alumno = this.miFormulario.value;
     alumnoForm.fechaAlta = new Date();
     this.modificado.next(alumnoForm);
-    console.log('fin');
   }
 }
