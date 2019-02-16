@@ -80,11 +80,19 @@
 		<put-attribute name="content" value="/WEB-INF/jsp/profesores/modificar.jsp" />
 	</definition>
 	
-	
-	
-	
-	
+	<!-- responsables-->
+	<definition name="responsables/listado" extends=".mainTemplate">
+		<put-attribute name="title" value="Listado de Responsables" type="string" />
+		<put-attribute name="content" value="/WEB-INF/jsp/responsables/listado.jsp" />
+	</definition>
+	<definition name="responsables/nuevo" extends=".mainTemplate">
+		<put-attribute name="title" value="Crear responsables" type="string" />
+		<put-attribute name="content" value="/WEB-INF/jsp/responsables/nuevo.jsp" />
+		
+	</definition>
+	<definition name="responsables/modificar" extends=".mainTemplate">
+		<put-attribute name="title" value="Modificar responsables" type="string" />
+		<put-attribute name="content" value="/WEB-INF/jsp/responsables/modificar.jsp" />
+	</definition>
 
-
-	
 </tiles-definitions>

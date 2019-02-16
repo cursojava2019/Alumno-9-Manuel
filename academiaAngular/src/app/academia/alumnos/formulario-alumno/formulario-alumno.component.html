@@ -1,26 +1,58 @@
-<h4>Form Validation</h4>
 <div class="jumbotron">
 <form [formGroup]="miFormulario" (ngSubmit)="guardarCambios()" novalidate="">
+    <label class="form-control-label">NIF</label>
+    <input class="form-control" type="text" placeholder="NIF" formControlName="nif" [ngClass]="{'is-invalid': miFormulario.get('nif').dirty && miFormulario.get('nif').errors}">
+    <div *ngIf="miFormulario.get('nif').dirty && miFormulario.get('nif').errors" class="alert alert-danger">
+      <p *ngIf="miFormulario.get('nif').hasError('required')">El nif es obligatorio</p>
+      <p *ngIf="miFormulario.get('nif').hasError('minlength') || miFormulario.get('nif').hasError('maxlength')">Debe tener 9 caracteres</p>
+    </div>
+
     <label class="form-control-label">Nombre</label>
-      <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre" [ngClass]="{'is-invalid': !miFormulario.get('nombre').valid}">
-      <div *ngIf="miFormulario.get('nombre').dirty && miFormulario.get('nombre').errors" class="alert alert-danger">
-       <p *ngIf="miFormulario.get('nombre').hasError('required')">El nombre es obligatorio</p>
-       <p *ngIf="miFormulario.get('nombre').hasError('minlength')">Por lo menos 3 caracteres</p>
-      </div>
-
-  <div class="form-group has-success">
-    <label class="form-control-label" for="inputSuccess">Input with success</label>
-    <input type="text" class="form-control form-control-success" id="inputSuccess">
-   </div>
-
-    <div class="form-group has-warning">
-      <label class="form-control-label" for="inputWarning">Input with warning</label>
-      <input type="text" class="form-control form-control-warning" id="inputWarning">
+    <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre" [ngClass]="{'is-invalid': miFormulario.get('nombre').dirty && miFormulario.get('nombre').errors}">
+    <div *ngIf="miFormulario.get('nombre').dirty && miFormulario.get('nombre').errors" class="alert alert-danger">
+      <p *ngIf="miFormulario.get('nombre').hasError('required')">El nombre es obligatorio</p>
+      <p *ngIf="miFormulario.get('nombre').hasError('minlength')">Por lo menos 3 caracteres</p>
     </div>
 
-    <div class="form-group has-danger">
-      <label class="form-control-label" for="inputError">Input with danger</label>
-      <input type="text" class="form-control form-control-danger" id="inputError">
+    <label class="form-control-label">Primer Apellido</label>
+    <input class="form-control" type="text" placeholder="Primer Apellido" formControlName="apellido1" [ngClass]="{'is-invalid': miFormulario.get('apellido1').dirty && miFormulario.get('apellido1').errors}">
+    <div *ngIf="miFormulario.get('apellido1').dirty && miFormulario.get('apellido1').errors" class="alert alert-danger">
+      <p *ngIf="miFormulario.get('apellido1').hasError('required')">El Primer Apellido es obligatorio</p>
+      <p *ngIf="miFormulario.get('apellido1').hasError('minlength')">Por lo menos 3 caracteres</p>
     </div>
+
+    <label class="form-control-label">Segundo Apellido</label>
+    <input class="form-control" type="text" placeholder="Segundo Apellido" formControlName="apellido2" [ngClass]="{'is-invalid': miFormulario.get('apellido2').dirty && miFormulario.get('apellido2').errors}">
+    <div *ngIf="miFormulario.get('apellido2').dirty && miFormulario.get('apellido2').errors" class="alert alert-danger">
+      <p *ngIf="miFormulario.get('apellido2').hasError('required')">El Segundo Apellido es obligatorio</p>
+      <p *ngIf="miFormulario.get('apellido2').hasError('minlength')">Por lo menos 3 caracteres</p>
+    </div>
+
+    <label class="form-control-label">Telefono</label>
+    <input class="form-control" type="text" placeholder="Telefono" formControlName="telefono" [ngClass]="{'is-invalid': miFormulario.get('telefono').dirty && miFormulario.get('telefono').errors}">
+    <div *ngIf="miFormulario.get('telefono').dirty && miFormulario.get('telefono').errors" class="alert alert-danger">
+      <p *ngIf="miFormulario.get('telefono').hasError('required')">El telefono es obligatorio</p>
+      <p *ngIf="miFormulario.get('telefono').hasError('minlength')">Por lo menos 3 caracteres</p>
+    </div>
+
+    <label class="form-control-label">Correo</label>
+    <input class="form-control" type="text" placeholder="Correo" formControlName="correo" [ngClass]="{'is-invalid': miFormulario.get('correo').dirty && miFormulario.get('correo').errors}">
+    <div *ngIf="miFormulario.get('correo').dirty && miFormulario.get('correo').errors" class="alert alert-danger">
+      <p *ngIf="miFormulario.get('correo').hasError('required')">El correo es obligatorio</p>
+      <p *ngIf="miFormulario.get('correo').hasError('email')">Correo no Valido</p>
+    </div>
+
+<div class="form-group">
+  <div class="checkbox">
+    <label class="" for="repetidor"><input type="checkbox" formControlName="repetidor"/>Repetidor</label>
+  </div>
+</div>
+
+<label class="form-control-label">Observaciones</label>
+    <textarea class="form-control" placeholder="Observaciones" formControlName="observaciones" [ngClass]="{'is-invalid': miFormulario.get('observaciones').dirty && miFormulario.get('observaciones').errors}"></textarea>
+    <div *ngIf="miFormulario.get('observaciones').dirty && miFormulario.get('observaciones').errors" class="alert alert-danger">
+      <p *ngIf="miFormulario.get('observaciones').hasError('maxlength')">El tamaño maximo es de 1000 caracteres</p>
+    </div>
+    <button class="btn btn-primary" [disabled]="miFormulario.invalid" type="submit">Enviar</button>
 </form>
 </div>

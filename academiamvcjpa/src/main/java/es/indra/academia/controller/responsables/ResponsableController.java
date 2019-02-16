@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import es.indra.academia.authentication.MyUserDetails;
-import es.indra.academia.controller.profesores.ProfesorFormValidator;
 import es.indra.academia.model.entities.ResponsableAlumno;
 import es.indra.academia.model.service.ResponsableService;
 
@@ -28,8 +27,7 @@ public class ResponsableController {
 	@Autowired
 	ResponsableService responsableService;
 
-	@Autowired
-	ProfesorFormValidator validador;
+	ResponsableFormValidator validador;
 	private Logger log = LogManager.getLogger(ResponsableController.class);
 
 	@RequestMapping(value = "/listado.html", method = RequestMethod.GET)
