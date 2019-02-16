@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
 import { AlumnoService } from '../../shared/services/alumno.service';
 import { Alumno } from '../../shared/entities/alumno';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-alumnos',
@@ -11,17 +12,22 @@ import { Alumno } from '../../shared/entities/alumno';
 })
 export class AlumnosComponent implements OnInit {
   alumnos: Array<Alumno>;
-  constructor(alumnosService: AlumnoService) {
+  constructor(alumnosService: AlumnoService, private router: Router) {
     this.alumnos = alumnosService.findAll();
   }
 
   ngOnInit() {
   }
 
+  irCrearAlumno() {
+    this.router.navigate(['alumnos/crear']);
+  }
+
   modificar(id: number) {
-    console.log(id);
+    this.router.navigate(['alumnos/modificar']);
   }
   eliminar(id: number) {
 
   }
+
 }

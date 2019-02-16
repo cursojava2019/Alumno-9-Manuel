@@ -1,0 +1,26 @@
+<h4>Form Validation</h4>
+<div class="jumbotron">
+<form [formGroup]="miFormulario" (ngSubmit)="guardarCambios()" novalidate="">
+    <label class="form-control-label">Nombre</label>
+      <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre" [ngClass]="{'is-invalid': !miFormulario.get('nombre').valid}">
+      <div *ngIf="miFormulario.get('nombre').dirty && miFormulario.get('nombre').errors" class="alert alert-danger">
+       <p *ngIf="miFormulario.get('nombre').hasError('required')">El nombre es obligatorio</p>
+       <p *ngIf="miFormulario.get('nombre').hasError('minlength')">Por lo menos 3 caracteres</p>
+      </div>
+
+  <div class="form-group has-success">
+    <label class="form-control-label" for="inputSuccess">Input with success</label>
+    <input type="text" class="form-control form-control-success" id="inputSuccess">
+   </div>
+
+    <div class="form-group has-warning">
+      <label class="form-control-label" for="inputWarning">Input with warning</label>
+      <input type="text" class="form-control form-control-warning" id="inputWarning">
+    </div>
+
+    <div class="form-group has-danger">
+      <label class="form-control-label" for="inputError">Input with danger</label>
+      <input type="text" class="form-control form-control-danger" id="inputError">
+    </div>
+</form>
+</div>

@@ -13,6 +13,7 @@ import { AcademiaModule } from './academia/academia.module';
 import { AlumnosModule } from './academia/alumnos/alumnos.module';
 import { ProfesoresModule } from './academia/profesores/profesores.module';
 import { BienvenidaModule } from './academia/bienvenida/bienvenida.module';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 // AoT requires an exported function for factories
 export const createTranslateLoader = (http: HttpClient) => {
@@ -31,6 +32,8 @@ export const createTranslateLoader = (http: HttpClient) => {
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
+        ReactiveFormsModule,
+        FormsModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
