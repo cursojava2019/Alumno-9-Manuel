@@ -98,8 +98,8 @@
 	 <script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
-            responsive: true
-            "searching": false
+            responsive: true;
+            "searching": false;
         });
         setTimeout(function() {
             $("#mensaje").toggle(2000);

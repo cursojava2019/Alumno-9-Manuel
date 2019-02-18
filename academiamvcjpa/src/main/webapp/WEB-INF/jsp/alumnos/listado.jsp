@@ -106,14 +106,8 @@
                         <!-- /.panel-body -->
                     </div>
             </div>
-            
-            
             </div>
             
-            
-            
-        
-  
 	 <script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({

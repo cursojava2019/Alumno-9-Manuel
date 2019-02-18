@@ -23,9 +23,10 @@
                         
                             <div class="row">
                                 <div class="col-lg-6">
-								<form:form action="./modificar.html" method="post" modelAttribute="responsable" >
-                                <form:hidden path="id" />
-                                    	
+                                                          			 
+                           			<form:form action="./modificar.html" method="post" modelAttribute="formulario" >
+                                    	<form:hidden path="id" />
+                                       
                                         <div class="form-group">
                                             <label>NIF</label>
                                            <form:input path="nif" class="form-control"/>
@@ -35,36 +36,35 @@
                                         <div class="form-group">
                                             <label>Nombre</label>
                                              <form:input path="nombre" class="form-control"/>
-                                             <form:errors path="nombre" element="div" cssClass="alert alert-danger"/>
                                             <p class="help-block"></p>
                                         </div>
                                         <div class="form-group">
                                             <label>Primer Apellido </label>
                                             <form:input path="apellido1" class="form-control"/>
-                                            <form:errors path="apellido1" element="div" cssClass="alert alert-danger"/>
+                                            
                                             <p class="help-block"></p>
                                         </div>
                                         <div class="form-group">
                                             <label>Segundo Apellido</label>
                                              <form:input path="apellido2" class="form-control"/>
-                                            <form:errors path="apellido2" element="div" cssClass="alert alert-danger"/>
+                                            
                                             <p class="help-block"></p>
                                         </div>
                                         <div class="form-group">
                                             <label>Telefono</label>
                                              <form:input path="telefono" class="form-control"/>
-                                            <form:errors path="telefono" element="div" cssClass="alert alert-danger"/>
+                                            
                                             <p class="help-block"></p>
                                         </div>
                                         <div class="form-group">
                                             <label>Correo</label>
                                              <form:input path="correo" class="form-control"/>
-                                             <form:errors path="correo" element="div" cssClass="alert alert-danger"/>
                                             <p class="help-block"></p>
                                         </div>
-                                      
+                                        
                                         <button type="submit" class="btn btn-default">Enviar</button>
                                         <button type="reset" class="btn btn-default">Limpiar</button>
+                                   
                                     </form:form>
                                 </div>
                                
@@ -75,4 +75,4 @@
                     </div>
                     <!-- /.panel -->
             </div>
-            </div>
+            </div>     

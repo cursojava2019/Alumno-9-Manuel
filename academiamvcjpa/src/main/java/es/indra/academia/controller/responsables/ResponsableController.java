@@ -12,6 +12,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,24 +20,33 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import es.indra.academia.authentication.MyUserDetails;
 import es.indra.academia.model.entities.ResponsableAlumno;
-import es.indra.academia.model.service.ResponsableService;
+import es.indra.academia.model.service.ResponsableJpaService;
+import es.indra.academia.model.support.DaoException;
+import es.indra.academia.model.support.ServiceException;
 
 @Controller
 @RequestMapping("/admin/responsables")
 public class ResponsableController {
 	@Autowired
-	ResponsableService responsableService;
+	ResponsableJpaService responsableService;
 	@Autowired
 	ResponsableFormValidator validador;
 	private Logger log = LogManager.getLogger(ResponsableController.class);
 
+	@ExceptionHandler(Exception.class)
+	public String exceptionHandler(Exception e, Model model) {
+		model.addAttribute("error", e.getMessage());
+		// logger.error(e);
+		return "error";
+	}
+
 	@RequestMapping(value = "/listado.html", method = RequestMethod.GET)
-	public String listado(Model model) {
+	public String listado(Model model) throws ServiceException, DaoException {
 		MyUserDetails user = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String name = user.getUsername(); // get logged in username
 
 		this.log.info("listado Responsables");
-		List<ResponsableAlumno> listado = this.responsableService.findAll();
+		List<ResponsableAlumno> listado = this.responsableService.buscarTodos();
 		model.addAttribute("listado", listado);
 		return "responsables/listado";
 	}
@@ -48,7 +58,8 @@ public class ResponsableController {
 	}
 
 	@RequestMapping(value = "/nuevo.html", method = RequestMethod.POST)
-	public String nuevoPost(@Valid @ModelAttribute("responsable") ResponsableForm form, BindingResult result) {
+	public String nuevoPost(@Valid @ModelAttribute("responsable") ResponsableForm form, BindingResult result)
+			throws ServiceException, DaoException {
 		ArrayList<String> errores = new ArrayList<String>();
 		this.validador.validate(form, result);
 		if (result.hasErrors()) {
@@ -56,7 +67,7 @@ public class ResponsableController {
 
 		} else {
 
-			this.responsableService.create(form.obtenerResponsableAlumno());
+			this.responsableService.crear(form.obtenerResponsableAlumno());
 			return "redirect:/admin/responsables/listado.html?mensaje=correcto";
 
 		}
@@ -64,15 +75,15 @@ public class ResponsableController {
 	}
 
 	@RequestMapping(value = "/modificar.html", method = RequestMethod.GET)
-	public String modificar(@RequestParam("id") Long id, Model model) {
+	public String modificar(@RequestParam("id") Long id, Model model) throws ServiceException, DaoException {
 		if (id == null) {
 			return "redirect:/admin/responsables/listado.html?mensaje=errorId";
 
 		} else {
-			ResponsableAlumno responsable = this.responsableService.find(id);
+			ResponsableAlumno responsable = this.responsableService.buscar(id);
 			if (responsable != null) {
 				ResponsableForm form = new ResponsableForm(responsable);
-				model.addAttribute("responsable", form);
+				model.addAttribute("formulario", form);
 				return "responsables/modificar";
 
 			} else {
@@ -84,30 +95,34 @@ public class ResponsableController {
 	}
 
 	@RequestMapping(value = "/modificar.html", method = RequestMethod.POST)
-	public String modificarPost(@Valid @ModelAttribute("responsable") ResponsableForm form, BindingResult result) {
-		this.validador.validate(form, result);
-		if (result.hasErrors()) {
+	public String modificarPost(@ModelAttribute("formulario") ResponsableForm responsable, Model model)
+			throws ServiceException, DaoException {
+		ArrayList<String> errores = new ArrayList<String>();
+
+		// alumno.validar(errores);
+		if (errores.size() > 0) {
+
+			model.addAttribute("errores", errores);
+
 			return "responsables/modificar";
-
 		} else {
-			ResponsableAlumno responsable = this.responsableService.find(form.getId());
-			form.modificar(responsable);
-			this.responsableService.update(responsable);
-			return "redirect:/admin/responsables/listado.html?mensaje=correcto";
 
+			this.responsableService.modificar(responsable.obtenerResponsableAlumno());
+
+			return "redirect:/admin/responsables/listado.html?mensaje=correcto";
 		}
 
 	}
 
 	@RequestMapping(value = "/eliminar.html", method = RequestMethod.GET)
-	public String eliminar(@RequestParam("id") Long id, Model model) {
+	public String eliminar(@RequestParam("id") Long id, Model model) throws ServiceException, DaoException {
 
 		if (id == null) {
 			return "redirect:/admin/responsables/listado.html?mensaje=errorId";
 		} else {
-			ResponsableAlumno responsable = this.responsableService.find(id);
+			ResponsableAlumno responsable = this.responsableService.buscar(id);
 			if (responsable != null) {
-				this.responsableService.delete(id);
+				this.responsableService.eliminarById(id);
 				return "redirect:/admin/responsables/listado.html?mensaje=correcto";
 			} else {
 				return "redirect:/admin/responsables/listado.html?mensaje=errorId";

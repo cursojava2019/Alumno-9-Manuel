@@ -30,7 +30,6 @@ public class AlumnoFormValidator implements Validator {
 				if (form.getId() == null || (!alumno.getId().equals(form.getId()))) {
 					errors.rejectValue("nif", "nif.unico");
 				}
-
 			}
 		}
 	}
