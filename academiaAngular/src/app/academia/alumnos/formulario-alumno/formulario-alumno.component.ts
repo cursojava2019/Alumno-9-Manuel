@@ -1,11 +1,13 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Alumno } from 'src/app/shared/entities/alumno';
+import { routerTransition } from 'src/app/router.animations';
 
 @Component({
   selector: 'app-formulario-alumno',
   templateUrl: './formulario-alumno.component.html',
-  styleUrls: ['./formulario-alumno.component.scss']
+  styleUrls: ['./formulario-alumno.component.scss'],
+  animations: [routerTransition()]
 })
 export class FormularioAlumnoComponent implements OnInit {
   miFormulario: FormGroup;
@@ -20,7 +22,13 @@ export class FormularioAlumnoComponent implements OnInit {
   modificado = new EventEmitter<Alumno>();
 
   constructor(private fb: FormBuilder) {
+
+  }
+
+  ngOnInit() {
     this.miFormulario = this.fb.group({
+      'id': this.fb.control('', [
+      ]),
       'nombre': this.fb.control('', [
         Validators.required,
         Validators.minLength(3)
@@ -53,14 +61,20 @@ export class FormularioAlumnoComponent implements OnInit {
       'fechaAlta': this.fb.control('', [
       ]),
     });
-  }
-
-  ngOnInit() {
+    if (this.modificar === true) {
+      this.miFormulario.patchValue(this.alumnoModificar);
+    }
   }
 
   guardarCambios() {
-    const alumnoForm: Alumno = this.miFormulario.value;
-    alumnoForm.fechaAlta = new Date();
-    this.modificado.next(alumnoForm);
+    if (this.modificar === false) {
+      const alumnoForm: Alumno = this.miFormulario.value;
+      alumnoForm.fechaAlta = new Date();
+      this.modificado.next(alumnoForm);
+    } else {
+      const alumnoForm: Alumno = this.miFormulario.value;
+      this.modificado.next(alumnoForm);
+    }
+
   }
 }

@@ -3,11 +3,13 @@ package es.indra.academia.controller.responsables;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 
 import es.indra.academia.model.entities.ResponsableAlumno;
 import es.indra.academia.model.service.ResponsableService;
 
+@Component
 public class ResponsableFormValidator {
 	@Autowired
 	private ResponsableService responsableService;

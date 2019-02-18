@@ -26,7 +26,7 @@ import es.indra.academia.model.service.ResponsableService;
 public class ResponsableController {
 	@Autowired
 	ResponsableService responsableService;
-
+	@Autowired
 	ResponsableFormValidator validador;
 	private Logger log = LogManager.getLogger(ResponsableController.class);
 
@@ -90,8 +90,9 @@ public class ResponsableController {
 			return "responsables/modificar";
 
 		} else {
-
-			this.responsableService.create(form.obtenerResponsableAlumno());
+			ResponsableAlumno responsable = this.responsableService.find(form.getId());
+			form.modificar(responsable);
+			this.responsableService.update(responsable);
 			return "redirect:/admin/responsables/listado.html?mensaje=correcto";
 
 		}

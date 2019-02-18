@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class AlumnosComponent implements OnInit {
   alumnos: Array<Alumno>;
-  constructor(alumnosService: AlumnoService, private router: Router) {
+  constructor(private alumnosService: AlumnoService, private router: Router) {
     this.alumnos = alumnosService.findAll();
   }
 
@@ -24,10 +24,12 @@ export class AlumnosComponent implements OnInit {
   }
 
   modificar(id: number) {
-    this.router.navigate(['alumnos/modificar']);
+    this.router.navigate(['alumnos/modificar', id]);
   }
   eliminar(id: number) {
-
+    if (confirm('Esta seguro de eliminar el alumno con id: ' + id)) {
+      this.alumnosService.delete(id);
+    }
   }
 
 }

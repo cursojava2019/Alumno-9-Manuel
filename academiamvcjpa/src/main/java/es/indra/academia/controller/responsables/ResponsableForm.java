@@ -117,4 +117,14 @@ public class ResponsableForm {
 	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
+
+	void modificar(ResponsableAlumno r) {
+
+		r.setNif(getNif());
+		r.setNombre(getNombre());
+		r.setApellido1(getApellido1());
+		r.setApellido2(getApellido2());
+		r.setTelefono(getTelefono());
+		r.setCorreo(getCorreo());
+	}
 }

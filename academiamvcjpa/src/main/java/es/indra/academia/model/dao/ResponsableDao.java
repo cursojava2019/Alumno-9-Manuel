@@ -51,7 +51,7 @@ public class ResponsableDao implements Dao<Long, ResponsableAlumno> {
 			PreparedStatement p = co.prepareStatement("UPDATE RESPONSABLE_ALUMNO " + "SET nif=?," + "nombre=?,"
 					+ "apellido1=?," + "apellido2=?," + "telefono=?," + "correo=?" + " WHERE id=?;");
 
-			p.setLong(8, entity.getId());
+			p.setLong(7, entity.getId());
 			p.setString(1, entity.getNif());
 			p.setString(2, entity.getNombre());
 			p.setString(3, entity.getApellido1());
