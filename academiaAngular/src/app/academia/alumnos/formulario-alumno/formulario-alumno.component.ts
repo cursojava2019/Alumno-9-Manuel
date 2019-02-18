@@ -53,7 +53,7 @@ export class FormularioAlumnoComponent implements OnInit {
         Validators.required,
         Validators.email,
       ]),
-      'repetidor': this.fb.control('', [
+      'repetidor': this.fb.control(false, [
       ]),
       'observaciones': this.fb.control('', [
         Validators.maxLength(1000)
