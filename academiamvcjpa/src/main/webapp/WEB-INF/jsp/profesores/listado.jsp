@@ -98,7 +98,7 @@
 	 <script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
-            responsive: true;
+            responsive: true,
             "searching": false;
         });
         setTimeout(function() {

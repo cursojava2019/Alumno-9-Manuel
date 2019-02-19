@@ -8,6 +8,8 @@
 
 
 
+
+
 <c:if test="${param.mensaje eq 'correcto'}">
  <c:set var="mensajeOK" value="true" ></c:set>
 </c:if>
@@ -96,18 +98,38 @@
                                         <td>${alumno.apellido1} ${alumno.apellido2}</td>
                                         <td>${alumno.nif}</td>
                                         <td>${alumno.telefono}</td>
-                                        <td ><a href="${ruta}/admin/alumnos/modificar.html?id=${alumno.id}">Modificar</a> <a href="#" onclick="confirmarEliminacion(${alumno.id})">Eliminar</a></td>
+                                        <td ><a href="${ruta}/admin/responsable/modificar.html?id=${alumno.id}">Modificar</a> <a href="#" onclick="confirmarEliminacion(${alumno.id})">Eliminar</a></td>
+                                        
+                                    
                                     </tr>
-                              </c:forEach>   
+                              </c:forEach>        
                                 </tbody>
-                            </table>
-                            
+                            </table> 
                         </div>
                         <!-- /.panel-body -->
                     </div>
             </div>
-            </div>
             
+            
+            </div>
+  
+  
+  <style>
+
+h1,h3 {
+	text-align:center;
+}
+a {
+	cursor:pointer;
+}
+.flotante {
+	z-index: 999; border-radius:50px; border: 8px solid #fff; margin-top: -756px; margin-left: -153px; top: 50%; left: 50%; padding: 12px; position: fixed; width: 265px; background-color: #fff; border-radius: 3px;
+}
+
+
+
+</style>
+
 	 <script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({

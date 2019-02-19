@@ -15,7 +15,7 @@
     
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Profesores</h1>
+                    <h1 class="page-header">Responsables</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -82,37 +82,86 @@
                                         <td>${responsable.apellido1} ${responsable.apellido2}</td>
                                         <td>${responsable.nif}</td>
                                         <td>${responsable.telefono}</td>
-                                        <td ><a href="${ruta}/admin/responsables/modificar.html?id=${responsable.id}">Modificar</a> <a href="#" onclick="confirmarEliminacion(${responsable.id})">Eliminar</a></td>
+                                        <td ><a href="${ruta}/admin/responsables/modificar.html?id=${responsable.id}">Modificar</a> <a href="#" onclick="confirmarEliminacion(${responsable.id})">Eliminar</a><a onmouseover="flotante(1,'${responsable.id}')" onmouseout="flotante(2,'${responsable.id}')"> Alumnos del responsable</a></td>
                                     </tr>
                               </c:forEach> 
                                 </tbody>
+                                
+                                <c:forEach var="relacion" items="${listado}">
+                                                
+                                            <div class="flotante" id="flotante_${relacion.id}" >
+                                                <c:forEach var="lista" items="${relacion.alumnos}">
+                                                      Alumno: ${lista.nombre} ${lista.apellido1} ${lista.apellido2}<br>
+                                                </c:forEach> 
+                                                
+                                           </div>       
+                                     		
+                                      </c:forEach> 
+                                
                             </table>
-                            
-                        </div>
+						</div>
                         <!-- /.panel-body -->
                     </div>
             </div>
             
             
             </div>
-	 <script>
+  <style>
+
+h1,h3 {
+	text-align:center;
+}
+a {
+	cursor:pointer;
+}
+.flotante {
+	z-index: 999; border-radius:50px; border: 8px solid #fff; margin-top: -756px; margin-left: -153px; top: 50%; left: 50%; padding: 12px; position: fixed; width: 265px; background-color: #fff; border-radius: 3px;
+}
+
+
+
+</style>
+
+<script>
+
+function flotante(tipo, id){
+
+	if (tipo==1){
+
+	$('#flotante_'+id).animate({
+      marginTop: "+50px",
+      marginLeft: "-300px",
+    },"slow");
+	$('#contenedor').show();
+
+	}
+	if (tipo==2){
+	$('#contenedor').fadeOut("slow");
+	$('#flotante_'+id).animate({
+	      marginTop: "-756px",
+	      marginLeft: "-750px",
+	},"slow");
+
+}
+
+}
+</script>
+
+<script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
-            responsive: true;
-            "searching": false;
+            responsive: true
+            "searching": false
         });
         setTimeout(function() {
             $("#mensaje").toggle(2000);
         },3000);
     });
-    
-    
-   
-    </script>
-	<script>
+</script>
+<script>
 	function confirmarEliminacion(id){
 		if (confirm("¿Está seguro que desea eliminar este responsable?")){
 			location.href='${ruta}/admin/responsables/eliminar.html?id='+id;
 		}
 	}
-	</script>
+</script>
