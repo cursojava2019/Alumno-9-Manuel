@@ -1,3 +1,48 @@
+<h2>Ejercicio 6</h2>
+<div class="row">
+<div class="col-1"></div>
+<div class="col-6">
+<div style="height:300px;">
+<div *ngIf="listarArticulos()?.length > 0;else sinArticulos">
+<div style="text-align: left">
+  <div>
+  	<table>
+      <thead>
+  		<tr>
+  			<th>Código</th>
+  			<th>Descripción</th>
+  			<th>Precio</th>
+  			<th>Borrar</th>
+  			<th>Seleccionar</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let item of listarArticulos()">
+      <tr>
+        <app-articulo [articulo]="item" (eventoEliminacion)="eliminarArticulo($event)"></app-articulo>
+      </tr>
+    </tbody>
+  	</table>
+  </div>
+</div>
+</div>
+<ng-template #sinArticulos>
+    <div >No hay artículos</div>
+</ng-template>
+
 <p>
-  ejercicio6 works!
+  <label>Código: </label><input type="number" [(ngModel)]="codigoEntrada">
 </p>
+<p>
+  <label>Descripción: </label><input type="text" [(ngModel)]="descripcionEntrada">
+</p>
+<p>
+  <label>Precio: </label><input type="number" [(ngModel)]="precioEntrada">
+</p>
+<p>
+  <button (click)="crearArticulo()">Agregar</button>
+  <button>Modificar</button>
+</p>
+<hr/>
+
+</div>
+</div>
