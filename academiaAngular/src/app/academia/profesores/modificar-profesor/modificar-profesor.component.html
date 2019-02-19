@@ -2,7 +2,7 @@
     <app-page-header [heading]="'Modificar Profesor'" [icon]="'fa-update'"></app-page-header>
     <div class="row">
       <div class="col-12">
-        <app-formulario-profesor [modificar]='true' [profesorModificar]="profesorActual" (modificado)="modificar($event)"></app-formulario-profesor>
+          <app-formulario-profesor *ngIf="profesorActual!=null" [modificar]='true' [profesorModificar]="profesorActual" (modificado)="modificar($event)"></app-formulario-profesor>
       </div>
     </div>
   </div>
