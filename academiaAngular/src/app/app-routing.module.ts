@@ -6,6 +6,7 @@ import { AuthGuard } from './shared';
 const routes: Routes = [
     { path: 'plantilla', loadChildren: './layout/layout.module#LayoutModule', canActivate: [AuthGuard] },
     { path: '', loadChildren: './academia/academia.module#AcademiaModule', canActivate: [AuthGuard] },
+    { path: 'academia', loadChildren: './academia/academia.module#AcademiaModule', canActivate: [AuthGuard] },
     { path: 'login', loadChildren: './login/login.module#LoginModule' },
     { path: 'signup', loadChildren: './signup/signup.module#SignupModule' },
     { path: 'error', loadChildren: './server-error/server-error.module#ServerErrorModule' },

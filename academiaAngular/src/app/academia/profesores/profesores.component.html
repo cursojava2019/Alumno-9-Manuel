@@ -4,8 +4,8 @@
     <div class="col col-xl-12 col-lg-12">
         <div class="card mb-3">
             <div class="card-header text-center ">
-              <h1>Bienvenido a la gestion de Alumnos</h1>
-              <button class="btn btn-primary" (click)="irCrearAlumno()">Nuevo Alumno</button>
+              <h1>Bienvenido a la gestion de Profesores</h1>
+              <button class="btn btn-primary" (click)="irCrear()">Nuevo Profesor</button>
               <div class="card-body table-responsive">
                 <table class="table">
                     <thead>
@@ -18,7 +18,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr *ngFor="let item of alumnos">
+                    <tr *ngFor="let item of profesores">
                         <th scope="row">{{item.nif}}</th>
                         <td>{{item.nombre}}</td>
                         <td>{{item.apellido1}} {{item.apellido2}}</td>
