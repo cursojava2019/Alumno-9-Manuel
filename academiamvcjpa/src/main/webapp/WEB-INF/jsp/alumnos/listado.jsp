@@ -54,29 +54,6 @@
                             Listado de Alumnos
                         </div>
                         
-                        <form name="buscador" action="./listado.html" method="post">
-                        <div class="">
-                        <div class="col-6">
-                        <label>Buscar Alumno</label>
-                        </div>
-                        <div style="float:right;">  <button class="btn btn-default"  onclick="location.href='<%=request.getContextPath()%>/admin/alumnos/nuevo.html';" type="button"><i class="fa fa-user"> Nuevo Usuario</i>
-                                                </button></div>
-                        <div class="col-6">
-                                            <input class="" name="patron" type="text" value="${param.patron}">
-                                            <span class="">
-                                                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i>
-                                                </button>
-                                            </span>
-                                            <c:if test="${not empty param.patron}">
-                                            
-                                            <span>Busqueda filtrada por <strong>${param.patron} </strong></span>
-                                            
-                                           </c:if>
-                                            </div>
-                                        </div>
-                                        
-                                        
-                        </form>
                         
                         <!-- /.panel-heading -->
                         <div class="panel-body">
