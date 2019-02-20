@@ -10,6 +10,7 @@ import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
 import es.indra.academia.model.entities.Alumno;
+import es.indra.academia.model.entities.ResponsableAlumno;
 
 public class AlumnoForm {
 	@Positive
@@ -37,6 +38,7 @@ public class AlumnoForm {
 	private Date fechaBaja;
 	@Size(min = 0, max = 500)
 	private String observaciones;
+	private ResponsableAlumno responsable;
 
 	public AlumnoForm() {
 		super();
@@ -63,6 +65,7 @@ public class AlumnoForm {
 		this.repetidor = (a.getRepetidor());
 		this.fechaAlta = (a.getFechaAlta());
 		this.fechaBaja = (a.getFechaBaja());
+		this.responsable = (a.getResponsable());
 	}
 
 	public Alumno obtenerAlumno() {
@@ -78,6 +81,7 @@ public class AlumnoForm {
 		a.setRepetidor(getRepetidor());
 		a.setFechaAlta(getFechaAlta());
 		a.setFechaBaja(getFechaBaja());
+		a.setResponsable(getResponsable());
 		return a;
 	}
 
@@ -100,6 +104,14 @@ public class AlumnoForm {
 //		}
 //
 //	}
+
+	public ResponsableAlumno getResponsable() {
+		return this.responsable;
+	}
+
+	public void setResponsable(ResponsableAlumno responsable) {
+		this.responsable = responsable;
+	}
 
 	public Long getId() {
 		return this.id;

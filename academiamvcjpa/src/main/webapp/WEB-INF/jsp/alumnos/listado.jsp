@@ -63,7 +63,8 @@
                                         <th>Nombre</th>
                                         <th>Apellidos</th>
                                         <th>DNI</th>
-                                        <th>Telefono</th>
+                                        <th>Responsable</th>
+                                     
                                         <th>Opciones</th>
                                     </tr>
                                 </thead>
@@ -74,14 +75,21 @@
                                         <td>${alumno.nombre}</td>
                                         <td>${alumno.apellido1} ${alumno.apellido2}</td>
                                         <td>${alumno.nif}</td>
-                                        <td>${alumno.telefono}</td>
-                                        <td ><a href="${ruta}/admin/responsable/modificar.html?id=${alumno.id}">Modificar</a> <a href="#" onclick="confirmarEliminacion(${alumno.id})">Eliminar</a></td>
+                                        <td>
+		                                       	<c:if test="${empty alumno.responsable}">
+	                                            	<b>Sin asignar</b>      
+								  				</c:if>
+		                                       	<c:if test="${not empty alumno.responsable}">
+	                                            	${alumno.responsable.nombre} ${alumno.responsable.apellido1} ${alumno.responsable.apellido2}            
+								  				</c:if>
+	                                    </td>
                                         
-                                    
+                                        <td ><a href="${ruta}/admin/alumnos/modificar.html?id=${alumno.id}">Modificar</a> <a href="#" onclick="confirmarEliminacion(${alumno.id})">Eliminar</a></td>
                                     </tr>
-                              </c:forEach>        
+                              </c:forEach>   
                                 </tbody>
-                            </table> 
+                            </table>
+                            
                         </div>
                         <!-- /.panel-body -->
                     </div>

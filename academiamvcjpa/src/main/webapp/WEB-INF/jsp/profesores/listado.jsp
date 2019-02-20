@@ -93,3 +93,15 @@
 		}
 	}
 	</script>
+<style>
+
+h1,h3 {
+	text-align:center;
+}
+a {
+	cursor:pointer;
+}
+.flotante {
+	z-index: 999; border-radius:50px; border: 8px solid #fff; margin-top: -756px; margin-left: -153px; top: 50%; left: 50%; padding: 12px; position: fixed; width: 265px; background-color: #fff; border-radius: 3px;
+}
+</style>
