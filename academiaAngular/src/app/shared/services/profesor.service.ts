@@ -10,8 +10,8 @@ import { Profesor } from '../entities/profesor';
 })
 export class ProfesorService {
   // aqui va la direccion del servidor al que te conectas
- url = 'http://localhost:8080/academiamvc/services/profesores/';
- // url = 'http://192.168.1.19:8080/academiamvc/services/profesores/';
+  url = 'http://localhost:8080/academiamvc/services/profesores/';
+  // url = 'http://192.168.1.19:8080/academiamvc/services/profesores/';
   constructor(private http: HttpClient) {
 
   }
