@@ -2,7 +2,7 @@
 <Configuration xmlns="http://logging.apache.org/log4j/2.0/config">
 
     <Appenders>
-        <File name="FILE" fileName="C:\\Users\\CURSOJAVA\\Documents\\Desarrollo\\academia.log" append="true">
+        <File name="FILE" fileName="C:\Users\cursojava\Documents\desarrollo\repositorios\Alumno-4-JuanJose\academiaMVCJPA\src\main\resources\\academia.log" append="true">
             <PatternLayout pattern="%-5p | %d{yyyy-MM-dd HH:mm:ss} | %c{1} [%t] (%C{2}:%L) - %m%n"/>
         </File>
         <Console name="STDOUT" target="SYSTEM_OUT">

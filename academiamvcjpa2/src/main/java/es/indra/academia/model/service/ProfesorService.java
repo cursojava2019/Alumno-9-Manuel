@@ -18,29 +18,29 @@ public class ProfesorService extends Service<Long, Profesor> {
 	@Autowired
 	private ProfesorDao dao;
 	private Logger log = LogManager.getLogger(ProfesorService.class);
-
+	
 	@Override
-	protected Dao<Long, Profesor> getDao() {
+	protected Dao<Long, Profesor> getDao(){
 		return this.dao;
 	}
 
 	public List<Profesor> findProfesoresPatron(String patron) {
 		try {
-			return this.dao.findProfesor(patron);
+			return this.dao.findProfesores(patron);
 		} catch (DaoException e) {
 			e.printStackTrace();
 			return new ArrayList<Profesor>();
 		}
 
 	}
-
+	
 	@Override
 	protected Logger getLog() {
 		return this.log;
 
 	}
 
-	public List<Profesor> buscarNif(String nif) {
+	public List<Profesor> buscarNif(String nif){
 		try {
 			return this.dao.buscarNif(nif);
 		} catch (DaoException e) {
@@ -48,4 +48,5 @@ public class ProfesorService extends Service<Long, Profesor> {
 			return null;
 		}
 	}
+
 }

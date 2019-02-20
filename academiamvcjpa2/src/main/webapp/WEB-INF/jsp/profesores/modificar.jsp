@@ -6,6 +6,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
+
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Modificar Profesor</h1>
@@ -23,9 +24,11 @@
                         
                             <div class="row">
                                 <div class="col-lg-6">
-								<form:form action="./modificar.html" method="post" modelAttribute="profesor" >
-                                <form:hidden path="id" />
-                                    	
+                                                          			 
+                           			<form:form action="./modificar.html" method="post" modelAttribute="formulario" >
+                                    	<form:hidden path="id" />
+                                    	<spring:hasBindErrors name="*">HAY ERRORES QUE RESOLVER</spring:hasBindErrors>
+                                       
                                         <div class="form-group">
                                             <label>NIF</label>
                                            <form:input path="nif" class="form-control"/>
@@ -33,19 +36,19 @@
                                             <p class="help-block"></p>
                                         </div>
                                         <div class="form-group">
-                                            <label>Nombre</label>
+                                            <label><spring:message code="profesor.nombre"/></label>
                                              <form:input path="nombre" class="form-control"/>
                                              <form:errors path="nombre" element="div" cssClass="alert alert-danger"/>
                                             <p class="help-block"></p>
                                         </div>
                                         <div class="form-group">
-                                            <label>Primer Apellido </label>
+                                            <label><spring:message code="profesor.apellido1"/></label>
                                             <form:input path="apellido1" class="form-control"/>
                                             <form:errors path="apellido1" element="div" cssClass="alert alert-danger"/>
                                             <p class="help-block"></p>
                                         </div>
                                         <div class="form-group">
-                                            <label>Segundo Apellido</label>
+                                            <label><spring:message code="profesor.apellido2"/></label>
                                              <form:input path="apellido2" class="form-control"/>
                                             <form:errors path="apellido2" element="div" cssClass="alert alert-danger"/>
                                             <p class="help-block"></p>
@@ -62,15 +65,20 @@
                                              <form:errors path="correo" element="div" cssClass="alert alert-danger"/>
                                             <p class="help-block"></p>
                                         </div>
+                                        
                                         <div class="form-group">
-                                            <label>Titulacion</label>
+                                            <label>Titulación</label>
                                              <form:input path="titulacion" class="form-control"/>
                                              <form:errors path="titulacion" element="div" cssClass="alert alert-danger"/>
                                             <p class="help-block"></p>
                                         </div>
-                                      
+                                        
+                                        
+                                        
+                                      		
                                         <button type="submit" class="btn btn-default">Enviar</button>
                                         <button type="reset" class="btn btn-default">Limpiar</button>
+                                   
                                     </form:form>
                                 </div>
                                
@@ -80,5 +88,8 @@
                         <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->
+            
             </div>
+            
+            
             </div>

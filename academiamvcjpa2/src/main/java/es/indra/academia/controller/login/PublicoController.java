@@ -38,4 +38,5 @@ public class PublicoController {
 	public String sinPermisos(ModelMap model) {
 		return "base/sinPermisos";
 	}
+
 }

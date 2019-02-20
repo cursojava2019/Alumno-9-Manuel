@@ -35,7 +35,7 @@ public class AlumnoDao implements Dao<Long, Alumno> {
 			p.setString(5, entity.getTelefono());
 			p.setString(6, entity.getCorreo());
 			p.setBoolean(7, entity.getRepetidor());
-			if (entity.getFechaAlta() != null) {
+			/*if (entity.getFechaAlta() != null) {
 				p.setDate(8, new java.sql.Date(entity.getFechaAlta().getTime()));
 			} else {
 				p.setDate(8, null);
@@ -44,7 +44,7 @@ public class AlumnoDao implements Dao<Long, Alumno> {
 				p.setDate(9, new java.sql.Date(entity.getFechaBaja().getTime()));
 			} else {
 				p.setDate(9, null);
-			}
+			}*/
 			p.setString(10, entity.getObservaciones());
 			p.executeUpdate();
 			co.close();
@@ -73,7 +73,7 @@ public class AlumnoDao implements Dao<Long, Alumno> {
 			p.setString(5, entity.getTelefono());
 			p.setString(6, entity.getCorreo());
 			p.setBoolean(7, entity.getRepetidor());
-			if (entity.getFechaAlta() != null) {
+			/*if (entity.getFechaAlta() != null) {
 				p.setDate(8, new java.sql.Date(entity.getFechaAlta().getTime()));
 			} else {
 				p.setDate(8, null);
@@ -82,7 +82,7 @@ public class AlumnoDao implements Dao<Long, Alumno> {
 				p.setDate(9, new java.sql.Date(entity.getFechaBaja().getTime()));
 			} else {
 				p.setDate(9, null);
-			}
+			}*/
 			p.setString(10, entity.getObservaciones());
 			p.executeUpdate();
 			co.close();
@@ -183,8 +183,8 @@ public class AlumnoDao implements Dao<Long, Alumno> {
 		alumno.setApellido2(apellido2);
 		alumno.setTelefono(telefono);
 		alumno.setCorreo(correo);
-		alumno.setFechaAlta(fechaAlta);
-		alumno.setFechaBaja(fechaBaja);
+		//alumno.setFechaAlta(fechaAlta);
+		//alumno.setFechaBaja(fechaBaja);
 		alumno.setRepetidor(repetidor);
 		alumno.setObservaciones(observaciones);
 
@@ -243,4 +243,5 @@ public class AlumnoDao implements Dao<Long, Alumno> {
 			throw new DaoException();
 		}
 	}
+
 }

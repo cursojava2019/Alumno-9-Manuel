@@ -15,21 +15,30 @@
                             </div>
                             <!-- /input-group -->
                         </li>
+                       
                         <li>
                             <a href="<%=request.getContextPath()%>/admin/index.html"><i class="fa fa-dashboard fa-fw"></i> Inicio</a>
                         </li>
+                       
                         <sec:authorize access="hasRole('ALUMNOS')">
                         <li>
                             <a href="<%=request.getContextPath()%>/admin/alumnos/listado.html"><i class="fa fa-bar-chart-o fa-fw"></i> Gestión de Alumnos</a>
                             
                             <!-- /.nav-second-level -->
                         </li>
-                        </sec:authorize>
+                         </sec:authorize>
                         <sec:authorize access="hasRole('PROFESORES')">
                         <li>
-                           <a href="<%=request.getContextPath()%>/admin/profesores/listado.html"><i class="fa fa-bar-chart-o fa-fw"></i> Gestión de Profesores</a>
+                           <a href="<%=request.getContextPath()%>/admin/profesor/listado.html"><i class="fa fa-bar-chart-o fa-fw"></i> Gestión de Profesores</a>
                         </li>
                          </sec:authorize>
+                         <sec:authorize access="hasRole('PROFESORES')">
+                        <li>
+                           <a href="<%=request.getContextPath()%>/admin/responsable/listado.html"><i class="fa fa-bar-chart-o fa-fw"></i> Gestión de Responsables</a>
+                        </li>
+                         </sec:authorize>
+                         
+                        
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

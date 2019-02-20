@@ -1,8 +1,11 @@
 package es.indra.academia.controller.profesores;
 
+import java.util.Date;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
@@ -27,6 +30,7 @@ public class ProfesorForm {
 	@Email
 	@NotEmpty
 	private String correo;
+	
 	@Size(min = 0, max = 500)
 	private String titulacion;
 
@@ -39,6 +43,7 @@ public class ProfesorForm {
 		this.telefono = "";
 		this.correo = "";
 		this.titulacion = "";
+		
 	}
 
 	public ProfesorForm(Profesor a) {
@@ -51,6 +56,7 @@ public class ProfesorForm {
 		this.telefono = (a.getTelefono());
 		this.correo = (a.getCorreo());
 		this.titulacion = (a.getTitulacion());
+		
 	}
 
 	public Profesor obtenerProfesor() {
@@ -63,9 +69,29 @@ public class ProfesorForm {
 		a.setTelefono(getTelefono());
 		a.setCorreo(getCorreo());
 		a.setTitulacion(getTitulacion());
-
+		
 		return a;
 	}
+
+//	public void validar(List<String> errores) {
+//		if (nif == null || nif.equals("")) {
+//			errores.add("El nif es obligatorio");
+//
+//		}
+//		if (nif.length() != 9) {
+//			errores.add("El formato de NIF no es correcto");
+//
+//		}
+//		if (nombre=() == null || getNombre().equals("")) {
+//			errores.add("El Nombre es obligatorio");
+//
+//		}
+//		if (getApellido1() == null || getApellido1().equals("")) {
+//			errores.add("El Primero Apellido es obligatorio");
+//
+//		}
+//
+//	}
 
 	public Long getId() {
 		return this.id;
@@ -123,6 +149,7 @@ public class ProfesorForm {
 		this.correo = correo;
 	}
 
+	
 	public String getTitulacion() {
 		return this.titulacion;
 	}
@@ -130,4 +157,6 @@ public class ProfesorForm {
 	public void setTitulacion(String titulacion) {
 		this.titulacion = titulacion;
 	}
+
+	
 }

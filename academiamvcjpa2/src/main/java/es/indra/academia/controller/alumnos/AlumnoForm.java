@@ -10,6 +10,10 @@ import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
 import es.indra.academia.model.entities.Alumno;
+import es.indra.academia.model.entities.ResponsableAlumno;
+import es.indra.academia.model.service.ResponsableJpaService;
+import es.indra.academia.model.support.DaoException;
+import es.indra.academia.model.support.ServiceException;
 
 public class AlumnoForm {
 	@Positive
@@ -37,7 +41,8 @@ public class AlumnoForm {
 	private Date fechaBaja;
 	@Size(min = 0, max = 500)
 	private String observaciones;
-
+	private ResponsableAlumno responsable;
+	
 	public AlumnoForm() {
 		super();
 		this.nif = "";
@@ -61,11 +66,12 @@ public class AlumnoForm {
 		this.correo = (a.getCorreo());
 		this.observaciones = (a.getObservaciones());
 		this.repetidor = (a.getRepetidor());
-		this.fechaAlta = (a.getFechaAlta());
-		this.fechaBaja = (a.getFechaBaja());
+		this.responsable=(a.getResponsableAlumno());
+		//this.fechaAlta = (a.getFechaAlta());
+		//this.fechaBaja = (a.getFechaBaja());
 	}
 
-	public Alumno obtenerAlumno() {
+	public Alumno obtenerAlumno() throws ServiceException, DaoException {
 		Alumno a = new Alumno();
 		a.setId(getId());
 		a.setNif(getNif());
@@ -76,10 +82,57 @@ public class AlumnoForm {
 		a.setCorreo(getCorreo());
 		a.setObservaciones(getObservaciones());
 		a.setRepetidor(getRepetidor());
-		a.setFechaAlta(getFechaAlta());
-		a.setFechaBaja(getFechaBaja());
+		a.setResponsableAlumno(getResponsable());
+		
 		return a;
 	}
+	public Alumno obtenernuevoalumno() throws ServiceException, DaoException {
+		Alumno a = new Alumno();
+		a.setId(getId());
+		a.setNif(getNif());
+		a.setNombre(getNombre());
+		a.setApellido1(getApellido1());
+		a.setApellido2(getApellido2());
+		a.setTelefono(getTelefono());
+		a.setCorreo(getCorreo());
+		a.setObservaciones(getObservaciones());
+		a.setRepetidor(getRepetidor());
+		return a;
+	}
+	
+	public void actualizar (Alumno a) {
+		a.setId(getId());
+		a.setNif(getNif());
+		a.setNombre(getNombre());
+		a.setApellido1(getApellido1());
+		a.setApellido2(getApellido2());
+		a.setTelefono(getTelefono());
+		a.setCorreo(getCorreo());
+		a.setObservaciones(getObservaciones());
+		a.setRepetidor(getRepetidor());
+		a.setResponsableAlumno(getResponsable());
+		
+	}
+
+//	public void validar(List<String> errores) {
+//		if (nif == null || nif.equals("")) {
+//			errores.add("El nif es obligatorio");
+//
+//		}
+//		if (nif.length() != 9) {
+//			errores.add("El formato de NIF no es correcto");
+//
+//		}
+//		if (nombre=() == null || getNombre().equals("")) {
+//			errores.add("El Nombre es obligatorio");
+//
+//		}
+//		if (getApellido1() == null || getApellido1().equals("")) {
+//			errores.add("El Primero Apellido es obligatorio");
+//
+//		}
+//
+//	}
 
 	public Long getId() {
 		return this.id;
@@ -183,6 +236,15 @@ public class AlumnoForm {
 		} else {
 			return "";
 		}
+	}
+
+	
+	public ResponsableAlumno getResponsable() {
+		return responsable;
+	}
+
+	public void setResponsable(ResponsableAlumno responsable) {
+		this.responsable = responsable;
 	}
 
 	public void setFechaAltaString(String fechaString) {

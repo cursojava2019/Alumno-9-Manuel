@@ -7,11 +7,22 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
 <c:if test="${param.mensaje eq 'correcto'}">
-	<c:set var="mensajeOK" value="true" ></c:set>
+ <c:set var="mensajeOK" value="true" ></c:set>
 </c:if>
+
 <c:if test="${param.mensaje=='errorId'}">
  <c:set var="mensajeError" value="true" ></c:set>
 </c:if>
+
+	<script>
+	
+	function confirmarEliminacion(id){
+		if (confirm("¿Está seguro que desea eliminar este profesor?")){
+			location.href='${ruta}/admin/profesores/eliminar.html?id='+id;
+		}
+	}
+	
+	</script>
     
             <div class="row">
                 <div class="col-lg-12">
@@ -28,11 +39,11 @@
                                Operación realizada correctamente
                             </div>
                         </c:if>
-                        <c:if test="${mensajeError}">
-                        	<div class="alert alert-danger" id="mensaje">
+                            <c:if test="${mensajeError}">
+                        <div class="alert alert-danger" id="mensaje">
                                Id no encontrado. No es posible realizar la operación.
                             </div>
-                        </c:if>
+                            </c:if>
                             
                             
                         <div class="panel-heading">
@@ -44,7 +55,7 @@
                         <div class="col-6">
                         <label>Buscar Profesor</label>
                         </div>
-                        <div style="float:right;">  <button class="btn btn-default"  onclick="location.href='<%=request.getContextPath()%>/admin/profesores/nuevo.html';" type="button"><i class="fa fa-user"> Nuevo Profesor</i>
+                        <div style="float:right;">  <button class="btn btn-default"  onclick="location.href='<%=request.getContextPath()%>/admin/profesores/nuevo.html';" type="button"><i class="fa fa-user"> Nuevo Usuario</i>
                                                 </button></div>
                         <div class="col-6">
                                             <input class="" name="patron" type="text" value="${param.patron}">
@@ -53,7 +64,9 @@
                                                 </button>
                                             </span>
                                             <c:if test="${not empty param.patron}">
-                                            	<span>Busqueda filtrada por <strong>${param.patron} </strong></span>
+                                            
+                                            <span>Busqueda filtrada por <strong>${param.patron} </strong></span>
+                                            
                                            </c:if>
                                             </div>
                                         </div>
@@ -70,11 +83,11 @@
                                         <th>Apellidos</th>
                                         <th>DNI</th>
                                         <th>Telefono</th>
+                                        <th>Titulación</th>
                                         <th>Opciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                
                                 <c:forEach var="profesor" items="${listado}"> 
                                
                                     <tr class="odd gradeX">
@@ -82,9 +95,10 @@
                                         <td>${profesor.apellido1} ${profesor.apellido2}</td>
                                         <td>${profesor.nif}</td>
                                         <td>${profesor.telefono}</td>
+                                        <td>${profesor.titulacion}</td>
                                         <td ><a href="${ruta}/admin/profesores/modificar.html?id=${profesor.id}">Modificar</a> <a href="#" onclick="confirmarEliminacion(${profesor.id})">Eliminar</a></td>
                                     </tr>
-                              </c:forEach> 
+                              </c:forEach>   
                                 </tbody>
                             </table>
                             
@@ -95,11 +109,12 @@
             
             
             </div>
+            
+
 	 <script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
             responsive: true
-            "searching": false
         });
         setTimeout(function() {
             $("#mensaje").toggle(2000);
@@ -109,10 +124,4 @@
     
    
     </script>
-	<script>
-	function confirmarEliminacion(id){
-		if (confirm("¿Está seguro que desea eliminar este profesor?")){
-			location.href='${ruta}/admin/profesores/eliminar.html?id='+id;
-		}
-	}
-	</script>
+   

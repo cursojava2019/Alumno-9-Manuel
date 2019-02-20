@@ -37,9 +37,8 @@
       class="org.springframework.context.support.ConversionServiceFactoryBean">
     <property name="converters">
         <list>
-               
-<!--             <bean class="es.indra.academia.controller.converters.FechaConverter"/> -->
-            
+         <bean class="es.indra.academia.controller.Converter.ResponsableAlumnoConverter"/>
+                 
         </list>
     </property>
 </bean>
@@ -117,8 +116,8 @@
               <property name="paramName" value="lang"></property>
         </bean>
     </mvc:interceptors>
-  
-  <tx:annotation-driven transaction-manager="transactionManager" mode="proxy" proxy-target-class="true"/>
+    
+    <tx:annotation-driven transaction-manager="transactionManager" mode="proxy" proxy-target-class="true"/>
   
 	
  <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
@@ -154,8 +153,8 @@
 
     <bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
   
+  	<jpa:repositories base-package="es.indra.academia.model.dao" />
     
-  
   
     
 </beans>

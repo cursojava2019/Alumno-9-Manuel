@@ -22,12 +22,19 @@ request.setAttribute("ruta",request.getContextPath());
 
     <div id="wrapper">
 
-
+        
         <tiles:insertAttribute name="cabecera" />
         <div id="page-wrapper">
             <tiles:insertAttribute name="script" />
             <tiles:insertAttribute name="content" />
+            
         </div>
+       
+
     </div>
+   
+
+  
+
 </body>
-</html> 
+</html>

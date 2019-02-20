@@ -23,29 +23,31 @@
                         
                             <div class="row">
                                 <div class="col-lg-6">
-                                <form:form action="./nuevo.html" method="post" modelAttribute="profesor" >
-                                <form:hidden path="id" />
-
-                                    <div class="form-group">
+                                
+                                    	<form:form action="./nuevo.html" method="post" modelAttribute="profesor" >
+                                    	<form:hidden path="id" />
+                                    	<spring:hasBindErrors name="*"> HAY ERRORRES QUE RESOLVER</spring:hasBindErrors>
+                                       
+                                        <div class="form-group">
                                             <label>NIF</label>
                                            <form:input path="nif" class="form-control"/>
                                            <form:errors path="nif" element="div" cssClass="alert alert-danger"/>
                                             <p class="help-block"></p>
                                         </div>
                                         <div class="form-group">
-                                            <label>Nombre</label>
-                                           <form:input path="nombre" class="form-control"/>
-                                           <form:errors path="nombre" element="div" cssClass="alert alert-danger"/>
+                                            <label><spring:message code="profesor.nombre"/></label>
+                                             <form:input path="nombre" class="form-control"/>
+                                             <form:errors path="nombre" element="div" cssClass="alert alert-danger"/>
                                             <p class="help-block"></p>
                                         </div>
                                         <div class="form-group">
-                                            <label>Primer Apellido</label>
-                                           <form:input path="apellido1" class="form-control"/>
-                                           <form:errors path="apellido1" element="div" cssClass="alert alert-danger"/>
+                                            <label><spring:message code="profesor.apellido1"/> </label>
+                                            <form:input path="apellido1" class="form-control"/>
+                                            <form:errors path="apellido1" element="div" cssClass="alert alert-danger"/>
                                             <p class="help-block"></p>
                                         </div>
                                         <div class="form-group">
-                                            <label>Segundo Apellido</label>
+                                            <label><spring:message code="profesor.apellido2"/></label>
                                              <form:input path="apellido2" class="form-control"/>
                                             <form:errors path="apellido2" element="div" cssClass="alert alert-danger"/>
                                             <p class="help-block"></p>
@@ -63,14 +65,16 @@
                                             <p class="help-block"></p>
                                         </div>
                                         <div class="form-group">
-                                            <label>Titulacion</label>
+                                            <label>Titulación</label>
                                              <form:input path="titulacion" class="form-control"/>
                                              <form:errors path="titulacion" element="div" cssClass="alert alert-danger"/>
                                             <p class="help-block"></p>
                                         </div>
-                                      
+                                        
+                                      		
                                         <button type="submit" class="btn btn-default">Enviar</button>
                                         <button type="reset" class="btn btn-default">Limpiar</button>
+                                   
                                     </form:form>
                                 </div>
                                
@@ -80,5 +84,11 @@
                         <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->
-            </div>            
+            
             </div>
+            
+            
+            </div>
+            
+            
+       

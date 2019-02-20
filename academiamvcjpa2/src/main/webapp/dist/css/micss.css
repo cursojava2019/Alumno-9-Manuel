@@ -1,0 +1,35 @@
+
+.main-section{
+	margin: 0 auto;
+	margin-top: 130px;
+	padding:0;
+}
+
+.modal-content{
+	background-color:#3b4653;
+	opacity: .95;
+	padding: 0 18px;
+	box-shadow: 0px 0px 3px #848484;
+}
+
+.text-white{
+	color: #fff;
+}
+
+.boton-login{
+	width: 40%;
+	margin: 5px 0 25px;
+	background-color: gray;
+	color:#fff;
+	font-size: 19px;
+	padding: 7px 14px;
+	border-radius:5px;
+	border-bottom: 4px solid gray;	
+}
+
+
+
+.boton-login:hover, .btn:focus{
+	color:#000;
+}
+

@@ -2,6 +2,9 @@ package es.indra.academia.model.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.List;
 
 
@@ -12,27 +15,35 @@ import java.util.List;
 @Entity
 @Table(name="responsable_alumno")
 @NamedQuery(name="ResponsableAlumno.findAll", query="SELECT r FROM ResponsableAlumno r")
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class ResponsableAlumno implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(unique=true, nullable=false)
 	private Long id;
 
+	@Column(length=100)
 	private String apellido1;
 
+	@Column(length=100)
 	private String apellido2;
 
+	@Column(length=100)
 	private String correo;
 
+	@Column(length=9)
 	private String nif;
 
+	@Column(length=100)
 	private String nombre;
 
+	@Column(length=20)
 	private String telefono;
 
 	//bi-directional many-to-one association to Alumno
-	@OneToMany(mappedBy="responsable", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="responsableAlumno", cascade={CascadeType.PERSIST, CascadeType.MERGE}, fetch=FetchType.EAGER)
 	private List<Alumno> alumnos;
 
 	public ResponsableAlumno() {
@@ -104,16 +115,24 @@ public class ResponsableAlumno implements Serializable {
 
 	public Alumno addAlumno(Alumno alumno) {
 		getAlumnos().add(alumno);
-		alumno.setResponsable(this);
+		alumno.setResponsableAlumno(this);
 
 		return alumno;
 	}
 
 	public Alumno removeAlumno(Alumno alumno) {
 		getAlumnos().remove(alumno);
-		alumno.setResponsable(null);
+		alumno.setResponsableAlumno(null);
 
 		return alumno;
 	}
+
+	@Override
+	public String toString() {
+		return  nombre+" "+ apellido1+" "+ apellido2 ; 
+				
+	}
+	
+	
 
 }

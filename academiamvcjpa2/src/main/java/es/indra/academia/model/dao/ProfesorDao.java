@@ -33,7 +33,6 @@ public class ProfesorDao implements Dao<Long, Profesor> {
 			p.setString(5, entity.getTelefono());
 			p.setString(6, entity.getCorreo());
 			p.setString(7, entity.getTitulacion());
-
 			p.executeUpdate();
 			co.close();
 		} catch (SQLException e) {
@@ -46,6 +45,7 @@ public class ProfesorDao implements Dao<Long, Profesor> {
 
 	@Override
 	public void update(Profesor entity) throws DaoException {
+
 		try {
 			Connection co = Configuracion.getInstance().obtenerConexionBD();
 			PreparedStatement p = co.prepareStatement("UPDATE PROFESOR " + "SET nif=?," + "nombre=?," + "apellido1=?,"
@@ -59,7 +59,6 @@ public class ProfesorDao implements Dao<Long, Profesor> {
 			p.setString(5, entity.getTelefono());
 			p.setString(6, entity.getCorreo());
 			p.setString(7, entity.getTitulacion());
-
 			p.executeUpdate();
 			co.close();
 		} catch (SQLException e) {
@@ -67,10 +66,12 @@ public class ProfesorDao implements Dao<Long, Profesor> {
 			e.printStackTrace();
 			throw new DaoException();
 		}
+
 	}
 
 	@Override
 	public void delete(Long key) throws DaoException {
+
 		try {
 			Connection co = Configuracion.getInstance().obtenerConexionBD();
 			PreparedStatement p = co.prepareStatement("DELETE FROM PROFESOR WHERE id=?");
@@ -83,6 +84,7 @@ public class ProfesorDao implements Dao<Long, Profesor> {
 			e.printStackTrace();
 			throw new DaoException();
 		}
+
 	}
 
 	@Override
@@ -102,7 +104,7 @@ public class ProfesorDao implements Dao<Long, Profesor> {
 			co.close();
 			return profesor;
 		} catch (SQLException e) {
-			System.out.println("Error listando objeto en BBDD");
+			System.out.println("Error creando objeto en BBDD");
 			e.printStackTrace();
 			throw new DaoException();
 		}
@@ -129,7 +131,7 @@ public class ProfesorDao implements Dao<Long, Profesor> {
 			co.close();
 			return listado;
 		} catch (Exception e) {
-			System.out.println("Error listando los objetos en BBDD");
+			System.out.println("Error creando objeto en BBDD");
 			e.printStackTrace();
 			throw new DaoException();
 		}
@@ -159,7 +161,7 @@ public class ProfesorDao implements Dao<Long, Profesor> {
 		return profesor;
 	}
 
-	public List<Profesor> findProfesor(String patron) throws DaoException {
+	public List<Profesor> findProfesores(String patron) throws DaoException {
 
 		try {
 			Connection co = Configuracion.getInstance().obtenerConexionBD();

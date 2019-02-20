@@ -12,6 +12,7 @@ public class Inicializador implements ServletContextListener {
 
 		// DOMConfigurator.configure("log4j2.xml");
 		System.out.println("LISTENER DE PRUEBA");
+
 	}
 
 	@Override

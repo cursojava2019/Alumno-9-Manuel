@@ -10,18 +10,23 @@ import java.util.List;
  * 
  */
 @Entity
+@Table(name="tarifa")
 @NamedQuery(name="Tarifa.findAll", query="SELECT t FROM Tarifa t")
 public class Tarifa implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(unique=true, nullable=false)
 	private Long id;
 
+	@Column(nullable=false, length=200)
 	private String descripcion;
 
+	@Column(nullable=false, length=50)
 	private String nombre;
 
+	@Column(nullable=false)
 	private double precio;
 
 	//bi-directional many-to-one association to Clase

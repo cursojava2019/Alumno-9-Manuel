@@ -10,12 +10,14 @@ import java.util.List;
  * 
  */
 @Entity
+@Table(name="clase")
 @NamedQuery(name="Clase.findAll", query="SELECT c FROM Clase c")
 public class Clase implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(unique=true, nullable=false)
 	private Long id;
 
 	//bi-directional many-to-many association to Alumno
@@ -23,7 +25,7 @@ public class Clase implements Serializable {
 	private List<Alumno> alumnos;
 
 	//bi-directional many-to-one association to Asignatura
-	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE})
+	@ManyToOne
 	@JoinColumn(name="id_asignatura")
 	private Asignatura asignatura;
 

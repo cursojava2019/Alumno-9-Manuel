@@ -4,36 +4,51 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 
 /**
  * The persistent class for the profesor database table.
  * 
  */
 @Entity
+@Table(name="profesor")
 @NamedQuery(name="Profesor.findAll", query="SELECT p FROM Profesor p")
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class Profesor implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(unique=true, nullable=false)
 	private Long id;
 
+	@Column(length=100)
 	private String apellido1;
 
+	@Column(length=100)
 	private String apellido2;
 
+	@Column(length=100)
 	private String correo;
 
+	@Column(length=9)
 	private String nif;
 
+	@Column(length=100)
 	private String nombre;
 
+	@Column(length=9)
 	private String telefono;
 
+	@Column(length=100)
 	private String titulacion;
 
 	//bi-directional many-to-one association to Clase
-	@OneToMany(mappedBy="profesor", cascade={CascadeType.PERSIST, CascadeType.MERGE}, fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="profesor", fetch=FetchType.EAGER)
 	private List<Clase> clases;
 
 	public Profesor() {
